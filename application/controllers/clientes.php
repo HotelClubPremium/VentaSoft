@@ -12,6 +12,7 @@ class Clientes extends CI_Controller {
 	{
 		$data['titulo']				=		'VentaSoft Clientes';
 		$data['viewControlador']	=		'clientes';
+		$data['nave']		     	=		'navClientes';
 		$data['contenido']			=		'index';
 		$data['datos']				=		$this->clientes_model->getClientes();
 		$this->load->view('masterPage/masterPage', $data);

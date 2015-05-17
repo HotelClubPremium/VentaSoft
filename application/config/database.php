@@ -42,13 +42,13 @@
 | make active.  By default there is only one group (the 'default' group).
 |
 | The $active_record variables lets you determine whether or not to load
-| the active record class
+| the active record class   mysql.hostinger.es
 */
 
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql.hostinger.es';
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'u663525905_sis';
 $db['default']['password'] = 'sississis3';
 $db['default']['database'] = 'u663525905_bdweb';

@@ -19,7 +19,7 @@
                 <li><a href="<?php echo base_url()?>empleados">Empleados</a></li>  
 				<li><a href="<?php echo base_url()?>usuarios">Usuarios</a></li>      
                 <li class      ="dropdown">
-                <a data-toggle ="dropdown" class="dropdown-toggle" href="#"> ACERCA DE <b class="caret"></b></a>
+                <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Acerca de <b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">
                 <li><a href    ="#">Quienes somos</a></li>
                 <li><a href    ="#">Ubicación</a></li>

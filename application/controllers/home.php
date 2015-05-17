@@ -10,8 +10,9 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['titulo']				= 	'VentaSoft';
+		$data['titulo']				= 	'Home';
 		$data['viewControlador']	=	'home';
+	    $data['nave']	     		=	'navHome';
 		$data['contenido']			=	'index';
 		$this->load->view('masterPage/masterPage', $data);
 	}

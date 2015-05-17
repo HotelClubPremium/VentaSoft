@@ -15,6 +15,7 @@ class Empleados extends CI_Controller {
 	{
 		$data['titulo']				=		'VentaSoft Empleados';
 		$data['viewControlador']	=		'empleados';
+		$data['nave']	    	    =		'navEmpleados';
 		$data['contenido']			=		'index';
 		$data['datos']				=		$this->empleados_model->getEmpleados();
 		$this->load->view('masterPage/masterPage', $data);

@@ -12,6 +12,7 @@ class Proveedores extends CI_Controller {
 	{
 		$data['titulo']				=		'VentaSoft Proveedores';
 		$data['viewControlador']	=		'proveedores';
+		$data['nave']		    	=		'navProveedores';
 		$data['contenido']			=		'index';
 		$data['datos']				=		$this->proveedores_model->getProveedores();
 		$this->load->view('masterPage/masterPage', $data);

@@ -12,6 +12,7 @@ class Productos extends CI_Controller {
 	{
 		$data['titulo']				=		'VentaSoft Productos';
 		$data['viewControlador']	=		'productos';
+		$data['nave']			    =		'navProductos';
 		$data['contenido']			=		'index';
 		$data['datos']				=		$this->productos_model->getProductos();
 		$this->load->view('masterPage/masterPage', $data);
