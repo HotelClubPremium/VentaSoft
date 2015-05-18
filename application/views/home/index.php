@@ -24,9 +24,7 @@
 					           <a href="<?php echo base_url()?>login">  <img src="<?=base_url()?>/utilities/img/home_login.png"  class="center-block img-responsive img-circule" alt="Generic placeholder circule">
 					           </a>  
 					            <h4>Inicio Session</h4>
-		            </div>
-
-           
+		            </div>           
           </div>
             <hr></hr>
             <hr></hr> 

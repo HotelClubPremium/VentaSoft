@@ -26,14 +26,14 @@ class Login extends CI_Controller
 						$this->load->view('masterPage/masterPage', $data);	
 
 				break;
-			case 'administrador':
+			case 'Administrador':
 				redirect(base_url().'admin');
 				break;
-			case 'editor':
-				redirect(base_url().'editor');
+			case 'Vendedor':
+				redirect(base_url().'vendedor');
 				break;	
-			case 'suscriptor':
-				redirect(base_url().'suscriptor');
+			case 'Cliente':
+				redirect(base_url().'cliente');
 				break;
 			default:		
 				        $data['titulo']				= 	'Inicio Session';

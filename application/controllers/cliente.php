@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Admin extends CI_Controller {
+class Cliente extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
@@ -11,15 +11,14 @@ class Admin extends CI_Controller {
 	
 	public function index()
 	{
-		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') != 'Administrador')
+		if($this->session->userdata('perfil') == FALSE)
 		{
 			redirect(base_url().'login');
 		}
-
-		$data['titulo']				= 	'Biemvenido Administrador';
+		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('perfil');
 		$data['viewControlador']	=	'roles';
-	    $data['nave']	     		=	'admin/navAdmin';
-		$data['contenido']			=	'admin/index';
+	    $data['nave']	     		=	'cliente/navcliente';
+		$data['contenido']			=	'cliente/index';
 		$this->load->view('masterPage/masterPage', $data);
 	}
 }
