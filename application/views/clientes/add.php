@@ -11,6 +11,8 @@
 		<p><?php echo $this->session->flashdata('ControllerMessage'); ?></p>
 	</div>
 <?php } ?>
+
+
 <p><?php echo validation_errors();?></p>
 <div class="col-md-4">
 	

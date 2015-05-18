@@ -82,6 +82,11 @@ class Login extends CI_Controller
 					$this->session->set_userdata($data);
 					$this->index();
 				}
+				else
+				{
+					$this->session->set_flashdata('ControllerMessage','Usuario o Contraseña incorrecta, verifique e intente nuevamente');
+					redirect(base_url().'login',301);
+				}
 			}
 		}else{
 			redirect(base_url().'login');

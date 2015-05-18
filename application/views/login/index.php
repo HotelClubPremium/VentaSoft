@@ -1,11 +1,23 @@
+         
            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+                     
+                                                                 <?php 
+                                                                if($this->session->flashdata('usuario_incorrecto'))
+                                                                {
+                                                                ?> 
+                                                                  <div class="alert alert-danger">
+                                                                       <p><strong> ¡Error! </strong><?=$this->session->flashdata('usuario_incorrecto')?></p>
+                                                                  </div>     
+                                                                <?php
+                                                                }
+                                                                ?>  
+
                       <div class="panel panel-info" >
                                 <div class="panel-heading">
                                     <div class="panel-title">Inicio Session</div>
                                 </div>   
 
-
-                              <div style="padding-top:30px" class="panel-body" >
+                         <div style="padding-top:30px" class="panel-body" >
 
                                       <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
@@ -38,14 +50,7 @@
                                                         </div>
                                                         <hr></hr>
                                                                 <?=form_close()?>
-                                                                <?php 
-                                                                if($this->session->flashdata('usuario_incorrecto'))
-                                                                {      
-                                                                ?>      
-                                                                <p><?=$this->session->flashdata('contraseña_incorrecta')?></p>
-                                                                <?php
-                                                                }
-                                                                ?>  
+                                                               
                                                      
                               </div>                     
                     </div>  
