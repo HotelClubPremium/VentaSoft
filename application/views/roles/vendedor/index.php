@@ -9,9 +9,9 @@
                                 <div style="padding-top:10px" class="panel-body" >
                                 	 <div class="form-group">
 										     <label> Rol :</label> 
-										      <input type="text" class="form-control" disabled value='<?=$this->session->userdata('perfil')?>'></input>  
+										      <input type="text" class="form-control" disabled value='<?=$this->session->userdata('rol')?>'></input>  
 										     <label> Usuario :</label> 
-										     <input type="text" class="form-control" disabled value='<?=$this->session->userdata('username')?>'></input>  
+										     <input type="text" class="form-control" disabled value='<?=$this->session->userdata('user')?>'></input>  
 										  </div>
 								      <hr> </hr>
 								      <?=anchor(base_url().'login/logout_ci', 'Cerrar sesión')?>

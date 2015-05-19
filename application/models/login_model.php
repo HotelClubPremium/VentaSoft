@@ -8,11 +8,11 @@ class Login_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	public function login_user($username,$password)
+	public function login_user($user,$pass)
 	{
-		$this->db->where('username',$username);
-		$this->db->where('password',$password);
-		$query = $this->db->get('users');
+		$this->db->where('user',$user);
+		$this->db->where('pass',$pass);
+		$query = $this->db->get('usuarios');
 		if($query->num_rows() == 1)
 		{
 			return $query->row();

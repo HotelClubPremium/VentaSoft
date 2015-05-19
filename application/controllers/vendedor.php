@@ -12,7 +12,7 @@ class Vendedor extends CI_Controller {
 	
 	public function index()
 	{
-		if($this->session->userdata('perfil') == FALSE || $this->session->userdata('perfil') == 'Cliente')
+		if($this->session->userdata('rol') == FALSE || $this->session->userdata('rol') == 'Cliente')
 		{
 			redirect(base_url().'home');
 		}

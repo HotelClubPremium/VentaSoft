@@ -11,11 +11,11 @@ class Cliente extends CI_Controller {
 	
 	public function index()
 	{
-		if($this->session->userdata('perfil') == FALSE)
+		if($this->session->userdata('rol') == FALSE)
 		{
 			redirect(base_url().'login');
 		}
-		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('perfil');
+		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('rol');
 		$data['viewControlador']	=	'roles';
 	    $data['nave']	     		=	'cliente/navcliente';
 		$data['contenido']			=	'cliente/index';
