@@ -19,9 +19,9 @@
                 <li class      ="dropdown">
                         <a data-toggle ="dropdown" class="dropdown-toggle" href="">ACERCA DE<b class="caret"></b></a>
                         <ul role       ="menu" class="dropdown-menu">
-                                <li><a href    ="#">Historia</a></li>
                                 <li><a href    ="#">Mision</a></li>
-                                <li><a href    ="#">Vision</a></li>                       
+                                <li><a href    ="#">Vision</a></li>      
+                                <li><a href    ="#">Historia</a></li>                 
                         </ul>
                 </li>
             </ul>
