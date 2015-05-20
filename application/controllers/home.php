@@ -12,6 +12,7 @@ class Home extends CI_Controller {
 	{
 		$data['titulo']				= 	'Home';
 		$data['viewControlador']	=	'home';
+		$data['viewNave']	        =   'home';
 	    $data['nave']	     		=	'navHome';
 		$data['contenido']			=	'index';
 		$this->load->view('masterPage/masterPage', $data);

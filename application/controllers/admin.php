@@ -17,9 +17,11 @@ class Admin extends CI_Controller {
 		}
 
 		$data['titulo']				= 	'Biemvenido Administrador';
-		$data['viewControlador']	=	'roles';
-	    $data['nave']	     		=	'admin/navAdmin';
-		$data['contenido']			=	'admin/index';
+		$data['viewControlador']	=	'rolAdmin';
+		$data['viewNave']	        =   'rolAdmin';
+	    $data['nave']	     		=	'navAdmin';
+		$data['contenido']			=	'index';
 		$this->load->view('masterPage/masterPage', $data);
+		
 	}
 }

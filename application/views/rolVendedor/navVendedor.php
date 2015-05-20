@@ -14,7 +14,7 @@
 				<li class="active"><a href="<?php echo base_url()?>vendedor">Inicio</a></li>
 				<li><a href="<?php echo base_url()?>clientes">Clientes</a></li>
                 <li><a href="<?php echo base_url()?>productos">Productos</a></li>
-				<li><a href="<?php echo base_url()?>usuarios">Usuarios</a></li>      
+				<li><a href="##">VENDEDOR</a></li>      
                 <li class      ="dropdown">
                 <a data-toggle ="dropdown" class="dropdown-toggle" href="#"> Recorridos <b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">

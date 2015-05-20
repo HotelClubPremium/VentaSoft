@@ -8,12 +8,15 @@ class Proveedores extends CI_Controller {
 		$this->load->model('proveedores_model');
 	}
 
-	public function index()
+	
+
+	public function index($folder_nav=null,$nav=null)
 	{
-		$data['titulo']				=		'VentaSoft Proveedores';
+		$data['titulo']				=		'Proveedores';
 		$data['viewControlador']	=		'proveedores';
-		$data['nave']		    	=		'navProveedores';
-		$data['contenido']			=		'index';
+		$data['viewNave']	        =         $folder_nav;
+		$data['nave']		    	=		         $nav;
+		$data['contenido']			=		      'index';
 		$data['datos']				=		$this->proveedores_model->getProveedores();
 		$this->load->view('masterPage/masterPage', $data);
 	}
@@ -45,8 +48,10 @@ class Proveedores extends CI_Controller {
 			}
 
 		}
-		$data['titulo']				=		'VentaSoft Proveedores';
+		$data['titulo']				=		'Proveedores';
 		$data['viewControlador']	=		'proveedores';
+		$data['viewNave']	        =         $folder_nav;
+		$data['nave']		    	=		         $nav;
 		$data['contenido']			=		'add';
 		$this->load->view('masterPage/masterPage', $data);
 	}
@@ -78,8 +83,10 @@ class Proveedores extends CI_Controller {
 			}
 
 		}
-		$data['titulo']				=		'VentaSoft Proveedores';
+	    $data['titulo']				=		'Proveedores';
 		$data['viewControlador']	=		'proveedores';
+		$data['viewNave']	        =         $folder_nav;
+		$data['nave']		    	=		         $nav;
 		$data['contenido']			=		'update';
 		$data['datos']				=		$this->proveedores_model->getProveedoresId($id);
 		$this->load->view('masterPage/masterPage', $data);

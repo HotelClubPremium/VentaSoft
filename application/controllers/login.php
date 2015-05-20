@@ -21,7 +21,8 @@ class Login extends CI_Controller
 						$data['token'] = $this->token();
 						$data['titulo']				= 	'Inicio Session';
 						$data['viewControlador']	=	'login';
-					    $data['nave']	     		=	'navLogin';
+						$data['viewNave']	        =   'home';
+					    $data['nave']	     		=	'navHome';
 						$data['contenido']			=	'index';
 						$this->load->view('masterPage/masterPage', $data);	
 
@@ -37,8 +38,9 @@ class Login extends CI_Controller
 				break;
 			default:		
 				        $data['titulo']				= 	'Inicio Session';
-						$data['viewControlador']	=	'login';
-					    $data['nave']	     		=	'navLogin';
+					    $data['viewControlador']	=	'login';
+						$data['viewNave']	        =   'home';
+					    $data['nave']	     		=	'navHome';
 						$data['contenido']			=	'index';
 						$this->load->view('masterPage/masterPage', $data);	
 				break;		

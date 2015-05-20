@@ -10,18 +10,24 @@
            
         </div>
         <div id="navbarCollapse" class="collapse navbar-collapse nav-justified">
+           
+            <?php $nav='navAdmin';
+                  $folder_nav='rolAdmin';
+            ?>
+
             <ul class="nav navbar-nav ">
-				<li class="active"><a href="<?php echo base_url()?>cliente">Inicio</a></li>
-				<li><a href="###">Seguimiento</a></li>
+				<li class="active"><a href="<?php echo base_url()?>admin">Inicio</a></li>
+				<li><a href="<?php echo base_url()?>clientes/index/">Clientes</a></li>
                 <li><a href="<?php echo base_url()?>productos">Productos</a></li>
-                <li><a href="###">Pedidos</a></li>
-				<li><a href="#">Contactanos</a></li> 
-                <li><a href="#">Servicio al Cliente</a></li> 
+				<li><a href="<?php echo base_url()?>proveedores/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Proveedores</a></li>
+				<li><a href="#">ADMIN</a></li>
+                <li><a href="<?php echo base_url()?>empleados">Empleados</a></li>  
+				<li><a href="<?php echo base_url()?>usuarios">Usuarios</a></li>      
                 <li class      ="dropdown">
                 <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Acerca de <b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">
-                <li><a href    ="#">Mision</a></li>
-                <li><a href    ="#">Vision</a></li>
+                <li><a href    ="#">Quienes somos</a></li>
+                <li><a href    ="#">Ubicación</a></li>
                 <li><a href    ="#">Historia</a></li>
                 </ul>
                 </li>

@@ -7,7 +7,7 @@ class Vendedor extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
-		$this->load->database('default');
+		
 	}
 	
 	public function index()
@@ -17,9 +17,10 @@ class Vendedor extends CI_Controller {
 			redirect(base_url().'home');
 		}
 		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('perfil');
-		$data['viewControlador']	=	'roles';
-	    $data['nave']	     		=	'vendedor/navVendedor';
-		$data['contenido']			=	'vendedor/index';
+		$data['viewControlador']	=	'rolVendedor';
+		$data['viewNave']	        =   'rolVendedor';
+	    $data['nave']	     		=	'navVendedor';
+		$data['contenido']			=	'index';
 		$this->load->view('masterPage/masterPage', $data);
 	}
 }
