@@ -1,4 +1,4 @@
-<section class="contenedor">
+section class="contenedor">
 	<nav role="navigation" class="navbar navbar-default nav-justified">
         <div class="navbar-header">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
