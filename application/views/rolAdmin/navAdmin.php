@@ -16,22 +16,23 @@
             ?>
 
             <ul class="nav navbar-nav ">
-				<li class="active"><a href="<?php echo base_url()?>admin">Inicio</a></li>
-				<li><a href="<?php echo base_url()?>clientes/index/">Clientes</a></li>
-                <li><a href="<?php echo base_url()?>productos">Productos</a></li>
-				<li><a href="<?php echo base_url()?>proveedores/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Proveedores</a></li>
-				<li><a href="#">ADMIN</a></li>
-                <li><a href="<?php echo base_url()?>empleados">Empleados</a></li>  
-				<li><a href="<?php echo base_url()?>usuarios">Usuarios</a></li>      
-                <li class      ="dropdown">
-                <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Acerca de <b class="caret"></b></a>
+				<li class="active"><a href="<?php echo base_url()?>admin">Inicio</a></li>				
+                <li><a href="<?php echo base_url()?>proveedores/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Proveedores</a></li>
+                <li><a href="<?php echo base_url()?>productos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Productos</a></li>
+				<li><a href="<?php echo base_url()?>clientes/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Clientes</a></li>
+                <li><a href="<?php echo base_url()?>empleados/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Empleados</a></li>  
+				<li class      ="dropdown">
+                <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Vendedores<b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">
-                <li><a href    ="#">Quienes somos</a></li>
-                <li><a href    ="#">Ubicación</a></li>
-                <li><a href    ="#">Historia</a></li>
+                <li><a href    ="#">Vendedores</a></li>
+                <li><a href    ="#">Rutas del dia</a></li>
+                <li><a href    ="#">Ubicacion Actual</a></li>
                 </ul>
                 </li>
+                <li><a href="<?php echo base_url()?>usuario/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Usuarios</a></li>
             </ul>
         </div>
-</nav>
-<section class="contenedor">
+   </nav>
+
+</section>
+<section class="contenedor"> <!--etiqueta contenedor principal que se cierra en el footer del masterPage --> 

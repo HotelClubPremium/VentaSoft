@@ -8,12 +8,13 @@ class Clientes extends CI_Controller {
 		$this->load->model('clientes_model');
 	}
 
-	public function index()
+	public function index($folder_nav=null,$nav=null)
 	{
-		$data['titulo']				=		'VentaSoft Clientes';
-		$data['viewControlador']	=		'clientes';
-		$data['nave']		     	=		'navClientes';
-		$data['contenido']			=		'index';
+		$data['titulo']				=	  'VentaSoft Clientes';
+		$data['viewControlador']	=		        'clientes';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=		           'index';
 		$data['datos']				=		$this->clientes_model->getClientes();
 		$this->load->view('masterPage/masterPage', $data);
 	}
@@ -48,8 +49,10 @@ class Clientes extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Clientes';
-		$data['viewControlador']	=		'clientes';
-		$data['contenido']			=		'add';
+		$data['viewControlador']	=		          'clientes';
+		$data['viewNave']	        =                $folder_nav;
+		$data['nave']		    	=		                $nav;
+		$data['contenido']			=		               'add';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 
@@ -84,8 +87,10 @@ class Clientes extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Clientes';
-		$data['viewControlador']	=		'clientes';
-		$data['contenido']			=		'update';
+		$data['viewControlador']	=		          'clientes';
+		$data['viewNave']	        =                $folder_nav;
+		$data['nave']		    	=		                $nav;
+		$data['contenido']			=		            'update';
 		$data['datos']				=		$this->clientes_model->getClientesId($id);
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
@@ -102,8 +107,10 @@ class Clientes extends CI_Controller {
 			redirect(base_url().'clientes/index',301);
 		}
 		$data['titulo']				=		'VentaSoft Clientes';
-		$data['viewControlador']	=		'clientes';
-		$data['contenido']			=		'delete';
+		$data['viewControlador']	=	              'clientes';
+		$data['viewNave']	        =                $folder_nav;
+		$data['nave']		    	=		                $nav;
+		$data['contenido']			=		            'delete';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 

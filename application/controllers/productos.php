@@ -8,17 +8,19 @@ class Productos extends CI_Controller {
 		$this->load->model('productos_model');
 	}
 
-	public function index()
-	{
-		$data['titulo']				=		'VentaSoft Productos';
-		$data['viewControlador']	=		'productos';
-		$data['nave']			    =		'navProductos';
-		$data['contenido']			=		'index';
+	public function index($folder_nav=null,$nav=null)
+	{   
+
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		       'productos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=		           'index';
 		$data['datos']				=		$this->productos_model->getProductos();
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
-	public function add()
+	public function add($folder_nav=null,$nav=null)
 	{
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 			
@@ -48,8 +50,10 @@ class Productos extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Productos';
-		$data['viewControlador']	=		'productos';
-		$data['contenido']			=		'add';
+		$data['viewControlador']	=		          'productos';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		                'add';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 
@@ -85,8 +89,10 @@ class Productos extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Productos';
-		$data['viewControlador']	=		'productos';
-		$data['contenido']			=		'update';
+		$data['viewControlador']	=		          'productos';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		             'update';
 		$data['datos']				=		$this->productos_model->getProductoId($id);
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
@@ -103,8 +109,10 @@ class Productos extends CI_Controller {
 			redirect(base_url().'productos/index',301);
 		}
 		$data['titulo']				=		'VentaSoft Productos';
-		$data['viewControlador']	=		'productos';
-		$data['contenido']			=		'delete';
+		$data['viewControlador']	=		          'productos';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		             'delete';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 

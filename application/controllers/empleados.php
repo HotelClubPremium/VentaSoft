@@ -11,19 +11,20 @@ class Empleados extends CI_Controller {
 
 
 
-	public function index()
+	public function index($folder_nav=null,$nav=null)
 	{
 		$data['titulo']				=		'VentaSoft Empleados';
-		$data['viewControlador']	=		'empleados';
-		$data['nave']	    	    =		'navEmpleados';
-		$data['contenido']			=		'index';
+		$data['viewControlador']	=		          'empleados';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		              'index';
 		$data['datos']				=		$this->empleados_model->getEmpleados();
 		$this->load->view('masterPage/masterPage', $data);
 		
 	}
 
 
-	public function add()
+	public function add($folder_nav=null,$nav=null)
 	{
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 			
@@ -54,8 +55,10 @@ class Empleados extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Empleados';
-		$data['viewControlador']	=		'empleados';
-		$data['contenido']			=		'add';
+		$data['viewControlador']	=		          'empleados';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		                'add';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 
@@ -93,8 +96,10 @@ class Empleados extends CI_Controller {
 
 		}
 		$data['titulo']				=		'VentaSoft Empleados';
-		$data['viewControlador']	=		'empleados';
-		$data['contenido']			=		'update';
+		$data['viewControlador']	=		          'empleados';
+		$data['viewNave']	        =                 $folder_nav;
+		$data['nave']		    	=		                 $nav;
+		$data['contenido']			=		             'update';
 		$data['datos']				=		$this->empleados_model->getEmpleadosId($id);
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}

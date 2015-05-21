@@ -16,7 +16,7 @@ class Admin extends CI_Controller {
 			redirect(base_url().'login');
 		}
 
-		$data['titulo']				= 	'Biemvenido Administrador';
+		$data['titulo']				= 	'Bienvenido Administrador';
 		$data['viewControlador']	=	'rolAdmin';
 		$data['viewNave']	        =   'rolAdmin';
 	    $data['nave']	     		=	'navAdmin';

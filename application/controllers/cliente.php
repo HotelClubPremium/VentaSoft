@@ -15,7 +15,7 @@ class Cliente extends CI_Controller {
 		{
 			redirect(base_url().'login');
 		}
-		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('rol');
+		$data['titulo']             =   'Bienvenido Cliente';
 		$data['viewControlador']	=	'rolCliente';
 		$data['viewNave']	        =   'rolCliente';
 	    $data['nave']	     		=	'navcliente';
