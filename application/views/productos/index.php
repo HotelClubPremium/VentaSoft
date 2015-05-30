@@ -71,7 +71,7 @@
 								                  </div>
 								</div>
 
-				      </div>
+				      </div>  <!--/cierre vcol md9--> 
                 </div>
 			</div>
 </div>	
