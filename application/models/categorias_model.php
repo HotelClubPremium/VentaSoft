@@ -1,57 +1,57 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Proveedores_model extends CI_Model {
+class Categorias_model extends CI_Model {
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function insertProveedores($datos=array())					
+	public function insertCategorias($datos=array())					
 	{
-		$this->db->insert('proveedores', $datos);
+		$this->db->insert('categorias', $datos);
 		return true;
 	}
 
-	public function getProveedores()
+	public function getCategorias()
 	{
 		$query=$this->db
 				->select('*')
-				->from('proveedores')
+				->from('categorias')
 				->get();
 		return $query->result();
 	}
 
-	public function getProveedoresId($id)
+	public function getCategoriasId($id)
 	{
-		$consulta=array('id_proveedor'=>$id);
+		$consulta=array('id_categoria'=>$id);
 		$query=$this->db
 				->select('*')
-				->from('proveedores')
+				->from('categorias')
 				->where($consulta)
 				->get();
 		return $query->row();
 	}
 
-	public function getProveedoresNombre($id)
+	public function getCategoriasNombre($id)
 	{
-		$consulta=array('id_proveedor'=>$id);
+		$consulta=array('id_categoria'=>$id);
 		$query=$this->db
 				->select('*')
-				->from('proveedores')
+				->from('categorias')
 				->where($consulta)
 				->get();
 		return $query->row();
 	}
 	
-	public function updateProveedores($datos=array(),$id)
+	public function updateCategorias($datos=array(),$id)
 	{
 		$this->db->where('id_proveedor', $id);
 		$this->db->update('proveedores', $datos);
 		return true;
 	}
 
-	public function deleteProveedores($id)
+	public function deleteCategorias($id)
 	{
 		$this->db->where('id_proveedor', $id);
 		$this->db->delete('proveedores');

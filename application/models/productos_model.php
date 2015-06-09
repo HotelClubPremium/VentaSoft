@@ -33,6 +33,17 @@ class Productos_model extends CI_Model {
 		return $query->row();
 	}
 
+	public function searchProductos($criterio,$valor)
+	{
+		$consulta=array($criterio=>$valor);
+		$query=$this->db
+				->select('*')
+				->from('productos')
+				->where($consulta)
+				->get();
+		return $query->result();
+	}
+
 	public function updateProducto($datos=array(),$id)
 	{
 		$this->db->where('id_producto', $id);

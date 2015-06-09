@@ -16,7 +16,7 @@ class Vendedor extends CI_Controller {
 		{
 			redirect(base_url().'home');
 		}
-		$data['titulo'] = 'Bienvenido :' .$this->session->userdata('perfil');
+		$data['titulo']             = 'Bienvenido ' .$this->session->userdata('perfil');
 		$data['viewControlador']	=	'rolVendedor';
 		$data['viewNave']	        =   'rolVendedor';
 	    $data['nave']	     		=	'navVendedor';

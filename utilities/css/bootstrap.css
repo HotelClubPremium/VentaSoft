@@ -105,6 +105,7 @@ mark {
 }
 small {
   font-size: 80%;
+
 }
 sub,
 sup {
@@ -267,11 +268,14 @@ th {
   p,
   h2,
   h3 {
+   
     orphans: 3;
     widows: 3;
   }
   h2,
   h3 {
+
+
     page-break-after: avoid;
   }
   select {
@@ -1223,6 +1227,7 @@ h6,
 .h4,
 .h5,
 .h6 {
+  
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
@@ -2580,8 +2585,8 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: 34px;
-  padding: 6px 12px;
+  height: 35px;
+  padding: 6px 10px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -2657,6 +2662,7 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+  padding: 5px 5px;
 }
 .radio,
 .checkbox {
@@ -2933,7 +2939,7 @@ select[multiple].form-group-lg .form-control {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373;
+  color: #d31343;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -3023,9 +3029,9 @@ select[multiple].form-group-lg .form-control {
 }
 .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 6px 10px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -3079,6 +3085,7 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+  height: 40px;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -3127,6 +3134,7 @@ fieldset[disabled] .btn-default.active {
   font-size: 20px;
   width: 575px;
   height: 40px;
+
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3172,6 +3180,8 @@ fieldset[disabled] .btn-primary.active {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
+  width: 300px;
+  height: 40px;
 }
 .btn-success:hover,
 .btn-success:focus,
@@ -4306,7 +4316,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-form {
-  padding: 10px 15px;
+  padding: 10px 25px;
   margin-top: 8px;
   margin-right: -15px;
   margin-bottom: 8px;
@@ -4983,6 +4993,7 @@ a.thumbnail.active {
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  text-align: center;
 }
 .alert h4 {
   margin-top: 0;
@@ -5374,7 +5385,7 @@ a.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 15px 15px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;

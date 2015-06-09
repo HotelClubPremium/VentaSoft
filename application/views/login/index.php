@@ -50,8 +50,7 @@
                                                         </div>
                                                         <hr></hr>
                                                                 <?=form_close()?>
-                                                               
-                                                     
+                                                                                           
                               </div>                     
                     </div>  
                     <hr> </hr>
