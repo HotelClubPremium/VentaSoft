@@ -42,7 +42,7 @@
 | make active.  By default there is only one group (the 'default' group).
 |
 | The $active_record variables lets you determine whether or not to load
-| the active record class   mysql.hostinger.es
+| the active record class                 mysql.hostinger.es
 */
 
 $active_group = 'default';

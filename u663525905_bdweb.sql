@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-05-2015 a las 15:33:46
+-- Tiempo de generación: 09-06-2015 a las 18:26:29
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -37,7 +37,12 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nom_categoria`) VALUES
-('1', 'aseo');
+('1', 'Aseo'),
+('2', 'Ferreteria'),
+('3', 'Canasta Familiar'),
+('4', 'Bebidass alcoholicas'),
+('5', 'Bebidass hidratantes'),
+('6', 'Bebidas Refrescantes');
 
 -- --------------------------------------------------------
 
@@ -165,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `nom_producto` varchar(45) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `valor_producto` bigint(20) NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
   `id_categoria` varchar(20) NOT NULL,
   `id_proveedor` varchar(20) NOT NULL,
   PRIMARY KEY (`id_producto`),
@@ -178,7 +183,11 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nom_producto`, `cantidad`, `valor_producto`, `descripcion`, `id_categoria`, `id_proveedor`) VALUES
-('12', 'fab', 2, 1500, 'limpia mejor', '1', '1065');
+('1', 'FAB', 45, 8500, 'Detergente en polvo 450 gr', '1', '1065'),
+('2', 'Soflan', 89, 4700, 'Detergente liquido', '4', '1066'),
+('4', 'Manzana postobon', 60, 1000, 'Bebida gaseosa ', '6', '1066'),
+('5', 'Colombiana Postobon', 100, 500, 'Bebiba Gaseosa 350 ml', '6', '1066'),
+('6', 'Pack Destornilladores', 10, 50000, 'Paquete de 30 piezas', '2', '3');
 
 -- --------------------------------------------------------
 
@@ -200,7 +209,9 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id_proveedor`, `nom_proveedor`, `ape_proveedor`, `telefono`, `correo`) VALUES
-('1065', 'pedro', 'gomez', '3135028786', 'pgomez@hotmail.com');
+('1065', 'pedro', 'gomez', '3135028786', 'pgomez@hotmail.com'),
+('1066', 'Postobon S.A', 'Postobon S.A', '32212121', 'Postobon@gmail.com'),
+('3', 'Stanley', 'Colombia', '3216968715', 'stanley@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -257,8 +268,8 @@ ALTER TABLE `pedidos`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `fk_productos_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_productos_proveedores1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
+  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores` (`id_proveedor`);
 
 --
 -- Filtros para la tabla `usuarios`

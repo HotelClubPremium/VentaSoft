@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 | If this is not set then CodeIgniter will guess the protocol, domain and
-| path to your installation.
+| path to your installation.           http://www.appventas.hol.es/
 |
 */
 $config['base_url']	= 'http://localhost:80/ventasoft/';

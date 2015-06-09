@@ -36,10 +36,12 @@ class Productos_model extends CI_Model {
 	public function searchProductos($criterio,$valor)
 	{
 		$consulta=array($criterio=>$valor);
+		
+
 		$query=$this->db
 				->select('*')
 				->from('productos')
-				->where($consulta)
+				->like($consulta)
 				->get();
 		return $query->result();
 	}

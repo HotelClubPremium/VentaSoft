@@ -53,6 +53,9 @@
 				                                                            	     <select name="criterio" id="criterio"   class="form-control">
 				                                                                          <option value="id_producto" >Id</option>
 				                                                                          <option value="nom_producto" selected >Nombre</option>
+				                                                                          <option value="cantidad" >Cantidad</option>
+				                                                                          <option value="valor_producto" >Valor unitario</option>
+				                                                                          <option value="descripcion" >Descripcion</option>
 				                                                                          <option value="id_categoria" >Categoria</option>
 				                                                                          <option value="id_proveedor" >Proveedor</option>
 				                                                            	     </select>

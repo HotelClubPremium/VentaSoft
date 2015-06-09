@@ -114,7 +114,7 @@
 
 																				       <select name="id_categoria" id="id_categoria"   class="form-control">
 																						 <?php
-																							//obtengo el todas de categoria
+																							//obtengo todas de categoria
 																							
 																								foreach($categorias as $fila)
 																								{
