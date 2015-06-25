@@ -46,6 +46,25 @@ class Productos_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function validationProductoId($id)
+	{
+		$consulta=array('id_producto'=>$id);
+		$query=$this->db
+				->select('*')
+				->from('productos')
+				->where($consulta)
+				->get();
+		
+		      if ($query->num_rows > 0) 
+		      {
+		         echo 'true';
+	          }else
+	          {
+                 echo 'false';
+	          }
+
+	}
+
 	public function updateProducto($datos=array(),$id)
 	{
 		$this->db->where('id_producto', $id);
