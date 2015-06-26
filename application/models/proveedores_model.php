@@ -51,11 +51,44 @@ class Proveedores_model extends CI_Model {
 		return true;
 	}
 
-	public function deleteProveedores($id)
+	public function deleteProveedor($id)
 	{
 		$this->db->where('id_proveedor', $id);
 		$this->db->delete('proveedores');
 		return true;
+	}
+
+
+public function searchProveedores($criterio,$valor)
+	{
+		$consulta=array($criterio=>$valor);
+		
+
+		$query=$this->db
+				->select('*')
+				->from('Proveedores')
+				->like($consulta)
+				->get();
+		return $query->result();
+	}
+
+	public function validarExistenciaProveedorId($id)
+	{
+		$consulta=array('id_Proveedor'=>$id);
+		$query=$this->db
+				->select('*')
+				->from('Proveedores')
+				->where($consulta)
+				->get();
+			
+		      if ($query->num_rows > 0) 
+		      {
+		          return true;
+	          }else
+	          {
+                  return false;
+	          }
+
 	}
 
 }

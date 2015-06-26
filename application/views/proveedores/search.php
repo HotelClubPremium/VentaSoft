@@ -28,7 +28,7 @@
 				      	             
 												 <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Proveedores <small></small></h1>
+													  	 <h1>Gestion Productos <small>Buscar</small></h1>
 													  </div>
 												  </div>
 									          
@@ -44,8 +44,7 @@
 								        $folder_nav= $viewNave;
 								       
 								 ?>
-
-									                               <?php 
+                                                          <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
 																		echo form_open_multipart('Proveedores/search/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
@@ -103,11 +102,3 @@
                 </div>
 			</div>
 </div>	
-
-
-
-
-
-
-
-

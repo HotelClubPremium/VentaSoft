@@ -60,7 +60,7 @@
                                                                             <div class="form-group">
 																		        <label class="control-label col-xs-4">Id Producto (*):</label>
 																		        <div class="col-xs-4">
-																		         <input type="text" name="id_producto" placeholder="id producto" class="form-control" value="<?php echo set_value("id_producto")?>">
+																		           <input type="text" name="id_producto" placeholder="id producto" class="form-control" value="<?php echo set_value("id_producto")?>">
 																		        </div>
 																		        <div class="col-xs-4">
 																		            <span class="help-block"><?php echo form_error('id_producto'); ?></span>

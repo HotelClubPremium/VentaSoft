@@ -46,7 +46,7 @@ class Productos_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function validationProductoId($id)
+	public function validarExistenciaProductoId($id)
 	{
 		$consulta=array('id_producto'=>$id);
 		$query=$this->db
@@ -54,13 +54,13 @@ class Productos_model extends CI_Model {
 				->from('productos')
 				->where($consulta)
 				->get();
-		
+			
 		      if ($query->num_rows > 0) 
 		      {
-		         echo 'true';
+		          return true;
 	          }else
 	          {
-                 echo 'false';
+                  return false;
 	          }
 
 	}

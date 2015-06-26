@@ -48,21 +48,32 @@ class Productos extends CI_Controller {
 					'descripcion'          =>$this->input->post("descripcion"),
 					'id_categoria'         =>$this->input->post("id_categoria"),
 					'id_proveedor'         =>$this->input->post("id_proveedor")
-					);
+					         );
 
-			    	$consulta= $this->productos_model->insertProducto($datos);
+                     
+                     $id = $this->input->post("id_producto");
+                     $validar= $this->productos_model->validarExistenciaProductoId($id);
 				
-				if ($consulta == true) {
-					$this->session->set_flashdata('ControllerMessage','Se Ha Guardado Correctamente');
-					redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
-				} else {
-					$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
-					redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
-				}
+				    if ($validar == true) {
+							$this->session->set_flashdata('ControllerMessage','Producto registrado anteriormente, verifique el codigo e intentelo nuevamente');
+							redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
+				    } else {
+							
+							   $consulta= $this->productos_model->insertProducto($datos);
+							   if ($consulta == true) {
+									$this->session->set_flashdata('ControllerMessage','Se Ha Guardado Correctamente');
+									redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
+								} else {
+									$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
+									redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
+								}
+		                   }
 				
 			}
 
 		}
+
+
 		$data['titulo']				=		'VentaSoft Productos';
 		$data['viewControlador']	=		          'productos';
 		$data['viewNave']	        =                 $folder_nav;
@@ -132,7 +143,7 @@ class Productos extends CI_Controller {
 		$consulta= $this->productos_model->deleteProducto($id);
 				
 		if ($consulta == true) {
-			$this->session->set_flashdata('ControllerMessage','Se ha Eliminado Correctamente');
+			$this->session->set_flashdata('ControllerMessage','Registro Eliminado Correctamente');
 			redirect(base_url().'productos/index/'.$folder_nav.'/'.$nav,301);
 		} else {
 			$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
@@ -169,7 +180,6 @@ class Productos extends CI_Controller {
 	}
 
 }
-
 
 /* End of file clientes.php */
 /* Location: ./application/controllers/clientes.php */
