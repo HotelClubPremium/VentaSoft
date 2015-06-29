@@ -145,18 +145,7 @@
                                       						</fieldset>
 															<fieldset>
 																	    <legend> Informacion Usuario (usuario)</legend>
-
-																	        <div class="form-group">
-																		        <label class="control-label col-xs-4">Id Usuario (*):</label>
-																		        <div class="col-xs-4">
-																		           <input type="text" name="id_usuario" placeholder="id usuario" class="form-control" value="<?php echo set_value("id_usuario")?>">
-																		        </div>
-																		        <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('id_usuario'); ?></span>
-                                                                                </div>
-																		    </div>
-
-                                                                           <div class="form-group">
+                                                                             <div class="form-group">
 																		        <label class="control-label col-xs-4">Rol (*):</label>
 																		        <div class="col-xs-4">
                                                                                 

@@ -37,19 +37,9 @@ class Usuarios extends CI_Controller {
 				$this->form_validation->set_message('valid_email', 'Campo no contiene estructura de e-mail');
 				$this->form_validation->set_error_delimiters('<span>','</span>');
 
-			if ($this->form_validation->run('vali_Usuarios') && $this->form_validation->run('vali_Personas')) { //ejecuto el archivo de form_validation
+			if ($this->form_validation->run('vali_Personas_Usuarios')) { //ejecuto el archivo de form_validation
 				
-              
-
-				$datos_usuarios =array(
-					'rol'                  =>$this->input->post("rol"),
-					'user'                 =>$this->input->post("user"),
-					'pass'                 =>$this->input->post("id_persona"),
-					'acceso'               =>$this->input->post("acceso"),
-					'id_persona'           =>$this->input->post("id_persona")
-					         );
-
-				$datos_persona =array(
+                $datos_persona =array(
 					'id_persona'           =>$this->input->post("id_persona"),
 					'nom_persona'          =>$this->input->post("nom_persona"),
 					'ape_persona'          =>$this->input->post("ape_persona"),
@@ -60,7 +50,15 @@ class Usuarios extends CI_Controller {
 					'telefono'             =>$this->input->post("telefono")
 					         );
 
-                     
+				$datos_usuarios =array(
+					'rol'                  =>$this->input->post("rol"),
+					'user'                 =>$this->input->post("user"),
+					'pass'                 =>sha1($this->input->post("id_persona")),
+					'acceso'               =>$this->input->post("acceso"),
+					'id_persona'           =>$this->input->post("id_persona")
+					         );
+
+			
                      $id = $this->input->post("id_persona");
                      $validar= $this->personas_model->validarExistenciaPersonaId($id);
 				
