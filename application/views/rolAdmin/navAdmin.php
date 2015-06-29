@@ -29,7 +29,7 @@
                 <li><a href    ="#">Ubicacion Actual</a></li>
                 </ul>
                 </li>
-                <li><a href="<?php echo base_url()?>usuario/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Usuarios</a></li>
+                <li><a href="<?php echo base_url()?>usuarios/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Usuarios</a></li>
             </ul>
         </div>
    </nav>

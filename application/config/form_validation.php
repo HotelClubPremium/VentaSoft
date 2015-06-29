@@ -38,6 +38,25 @@ $config = array(
 			array('field' => 'id_proveedor',   'label'=> 'id_proveedor', 		'rules' => 'required|trim|xss_clean')		
 	
 	                                ),
+	    'vali_Personas'	=> array(
+			array('field' => 'id_persona',	       'label'=> 'id_persona',	    	'rules' => 'required|is_string|trim|xss_clean',),
+			array('field' => 'nom_persona',        'label'=> 'nom_persona', 		'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'ape_persona', 	   'label'=> 'ape_persona',         'rules' => 'required|is_string|trim|xss_clean'),			
+			array('field' => 'sexo',               'label'=> 'sexo', 		        'rules' => 'required|is_string|trim|xss_clean'),	
+			array('field' => 'fecha_nacimiento',   'label'=> 'fecha_nacimiento',	'rules' => 'required|trim|xss_clean'),
+			array('field' => 'direccion',          'label'=> 'direccion', 	        'rules' => 'required|trim|xss_clean'),
+			array('field' => 'correo',             'label'=> 'correo', 		        'rules' => 'required|valid_email|xss_clean'),
+			array('field' => 'telefono',           'label'=> 'telefono', 	        'rules' => 'required|numeric|xss_clean')		
+	
+	                                ),
+	    'vali_Usuarios'	=> array(
+			array('field' => 'id_usuario',	   'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean',),
+			array('field' => 'rol',            'label'=> 'rol',         		'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'user', 	       'label'=> 'user',                'rules' => 'required|is_string|trim|xss_clean'),			
+			array('field' => 'acceso',         'label'=> 'acceso', 	        	'rules' => 'required|numeric|trim|xss_clean'),	
+			array('field' => 'id_persona',     'label'=> 'id_persona', 		    'rules' => 'required|trim|is_string|xss_clean')
+	
+	                                ),
 	     
 	    
 	    'empleados/add'	=>	array(

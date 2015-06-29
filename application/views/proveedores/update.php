@@ -61,7 +61,7 @@
 																	       <div class="form-group">
 																		        <label class="control-label col-xs-4">Id Proveedor (*):</label>
 																		        <div class="col-xs-4">
-																		         <input type="text" name="id_proveedor" placeholder="id proveedor" class="form-control" value="<?php echo $datos->id_proveedor?>">
+																		         <input type="text" name="id_proveedor" placeholder="id proveedor"  class="form-control" value="<?php echo $datos->id_proveedor?>">
 																		        </div>
 																		        <div class="col-xs-4">
 																		            <span class="help-block"><?php echo form_error('id_proveedor'); ?></span>

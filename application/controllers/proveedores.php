@@ -99,7 +99,7 @@ class Proveedores extends CI_Controller {
 				$guardar= $this->proveedores_model->updateProveedores($datos,$id);
 				
 				if ($guardar == true) {
-					$this->session->set_flashdata('ControllerMessage','Se Ha Guardado Correctamente');
+					$this->session->set_flashdata('ControllerMessage','Se Ha Actualizado Correctamente');
 					redirect(base_url().'proveedores/index/'.$folder_nav.'/'.$nav,301);
 				} else {
 					$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
