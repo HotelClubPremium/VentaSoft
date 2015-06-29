@@ -37,15 +37,14 @@ class Usuarios extends CI_Controller {
 				$this->form_validation->set_message('valid_email', 'Campo no contiene estructura de e-mail');
 				$this->form_validation->set_error_delimiters('<span>','</span>');
 
-			if ($this->form_validation->run('vali_Usuarios') & $this->form_validation->run('vali_Personas')) { //ejecuto el archivo de form_validation
+			if ($this->form_validation->run('vali_Usuarios') && $this->form_validation->run('vali_Personas')) { //ejecuto el archivo de form_validation
 				
               
 
 				$datos_usuarios =array(
-					'id_usuario'           =>$this->input->post("id_usuario"),
 					'rol'                  =>$this->input->post("rol"),
 					'user'                 =>$this->input->post("user"),
-					'pass'                 =>$this->input->post("id_usuario"),
+					'pass'                 =>$this->input->post("id_persona"),
 					'acceso'               =>$this->input->post("acceso"),
 					'id_persona'           =>$this->input->post("id_persona")
 					         );

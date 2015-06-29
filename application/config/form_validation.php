@@ -16,7 +16,7 @@ $config = array(
 			),
 
         'vali_search'	=> array(
-			array('field' => 'criterio',	   'label'=> 'criterio',	    	'rules' => 'required|is_string|trim|xss_clean',),
+			array('field' => 'criterio',	   'label'=> 'criterio',	    	'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'valor',          'label'=> 'valor', 		        'rules' => 'required|is_string|trim|xss_clean')
 			
 	                              ),
@@ -30,7 +30,7 @@ $config = array(
 			),
 
 	    'vali_Productos'	=> array(
-			array('field' => 'id_producto',	   'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean',),
+			array('field' => 'id_producto',	   'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'nom_producto',   'label'=> 'nom_producto', 		'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'cantidad', 	   'label'=> 'cantidad',            'rules' => 'required|numeric|trim|xss_clean'),			
 			array('field' => 'valor_producto', 'label'=> 'valor_producto', 		'rules' => 'required|numeric|trim|xss_clean'),	
@@ -39,7 +39,7 @@ $config = array(
 	
 	                                ),
 	    'vali_Personas'	=> array(
-			array('field' => 'id_persona',	       'label'=> 'id_persona',	    	'rules' => 'required|is_string|trim|xss_clean',),
+			array('field' => 'id_persona',	       'label'=> 'id_persona',	    	'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'nom_persona',        'label'=> 'nom_persona', 		'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'ape_persona', 	   'label'=> 'ape_persona',         'rules' => 'required|is_string|trim|xss_clean'),			
 			array('field' => 'sexo',               'label'=> 'sexo', 		        'rules' => 'required|is_string|trim|xss_clean'),	
@@ -50,7 +50,6 @@ $config = array(
 	
 	                                ),
 	    'vali_Usuarios'	=> array(
-			array('field' => 'id_usuario',	   'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean',),
 			array('field' => 'rol',            'label'=> 'rol',         		'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'user', 	       'label'=> 'user',                'rules' => 'required|is_string|trim|xss_clean'),			
 			array('field' => 'acceso',         'label'=> 'acceso', 	        	'rules' => 'required|numeric|trim|xss_clean'),	
