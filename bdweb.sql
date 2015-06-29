@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-06-2015 a las 06:24:13
+-- Tiempo de generación: 29-06-2015 a las 16:49:28
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -87,23 +87,6 @@ CREATE TABLE IF NOT EXISTS `geolocalizacion` (
   KEY `fk_geolocalizacion_personas1_idx` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `geolocalizacion`
---
-
-INSERT INTO `geolocalizacion` (`id_persona`, `latitud`, `longitud`, `fecha`) VALUES
-('1065', '10.47801012', '-73.27475948', '2015-06-28 23:08:13'),
-('1065', '10.47801667', '-73.27475196', '2015-06-28 23:10:18'),
-('1065', '10.47801424', '-73.2747548', '2015-06-28 23:14:17'),
-('1065', '10.47801418', '-73.27475476', '2015-06-28 23:16:09'),
-('1065', '10.47801416', '-73.27475475', '2015-06-28 23:16:37'),
-('1065', '10.47801383', '-73.27475343', '2015-06-28 23:17:12'),
-('1065', '10.47801446', '-73.27475656', '2015-06-28 23:17:13'),
-('1065', '10.4780129', '-73.27475038', '2015-06-28 23:17:18'),
-('1065', '10.47801549', '-73.2747587', '2015-06-28 23:17:20'),
-('1065', '10.47801634', '-73.27476899', '2015-06-28 23:17:46'),
-('1065', '10.47801651', '-73.27476898', '2015-06-28 23:17:49');
-
 -- --------------------------------------------------------
 
 --
@@ -113,11 +96,11 @@ INSERT INTO `geolocalizacion` (`id_persona`, `latitud`, `longitud`, `fecha`) VAL
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `id_pedido` varchar(20) NOT NULL,
   `fecha_pedido` date NOT NULL,
-  `id_usuario` varchar(20) NOT NULL,
+  `id_persona` varchar(20) NOT NULL,
   `id_estado` varchar(20) NOT NULL,
   PRIMARY KEY (`id_pedido`),
-  KEY `fk_pedidos_usuarios1_idx` (`id_usuario`),
-  KEY `fk_pedidos_estados1_idx` (`id_estado`)
+  KEY `fk_pedidos_estados1_idx` (`id_estado`),
+  KEY `fk_pedidos_personas1_idx` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -137,13 +120,6 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `telefono` varchar(45) NOT NULL,
   PRIMARY KEY (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `personas`
---
-
-INSERT INTO `personas` (`id_persona`, `nom_persona`, `ape_persona`, `sexo`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`) VALUES
-('1065', 'jeiner', 'mellado', 'm', '1993-06-28', 'calle 7 #29-90', 'je_in_er@hotmail.com', '3135028786');
 
 -- --------------------------------------------------------
 
@@ -182,11 +158,23 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id_rol` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_rol` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_rol`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usuario` varchar(20) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `rol` varchar(45) NOT NULL,
   `user` varchar(45) NOT NULL,
   `pass` varchar(45) NOT NULL,
@@ -195,16 +183,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `user_UNIQUE` (`user`),
   KEY `fk_usuarios_personas1_idx` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id_usuario`, `rol`, `user`, `pass`, `acceso`, `id_persona`) VALUES
-('1', 'Vendedor', 'Vjeiner', '1234', '1', '1065'),
-('2', 'Cliente', 'Cjeiner', '1234', '1', '1065'),
-('3', 'Admin', 'Ajeiner', '1234', '1', '1065');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Restricciones para tablas volcadas
@@ -233,8 +212,8 @@ ALTER TABLE `geolocalizacion`
 -- Filtros para la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `fk_pedidos_usuarios1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pedidos_estados1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_pedidos_estados1` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pedidos_personas1` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `productos`
