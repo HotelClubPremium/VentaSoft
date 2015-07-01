@@ -18,7 +18,7 @@ class Usuarios extends CI_Controller {
 		$data['viewNave']	        =             $folder_nav;
 		$data['nave']		    	=		             $nav;
 		$data['contenido']			=		          'index';
-		$data['datos']				=		$this->usuarios_model->getUsuarios();
+		$data['datos']				=		$this->usuarios_model->getUsuariosJoin();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo y no el id como aparece en la la bd
 		$data['roles'] 	         	=		$this->roles_model->getRoles();
 		//$data['personas']		    =		$this->personas_model->getPersonas();

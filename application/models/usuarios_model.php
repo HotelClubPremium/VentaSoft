@@ -23,6 +23,22 @@ class Usuarios_model extends CI_Model {
 				->get();
 		return $query->result();
 	}
+	public function getUsuariosJoin()
+	{
+		$query = $this->db
+		       ->select('usuarios.id_usuario,usuarios.rol,usuarios.user,usuarios.acceso,usuarios.id_persona,personas.nom_persona')
+               ->from('usuarios')
+               ->join('personas','personas.id_persona = usuarios.id_persona')
+               ->get();
+        return $query->result();
+	}
+
+
+// Produce: 
+// SELECT * FROM blogs
+// JOIN comentarios ON comentarios.id = blogs.id
+
+
 
 	public function getUsuarioId($id)
 	{
