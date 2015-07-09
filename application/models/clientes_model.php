@@ -15,11 +15,14 @@ class Clientes_model extends CI_Model {
 
 	public function getClientes()
 	{
-		$query=$this->db
-				->select('*')
-				->from('clientes')
-				->get();
-		return $query->result();
+		$consulta=array('rol'=>"Cliente");
+		$query = $this->db
+		       ->select('usuarios.id_usuario,usuarios.rol,usuarios.user,usuarios.acceso,usuarios.id_persona,personas.nom_persona')
+               ->from('usuarios')
+               ->join('personas','personas.id_persona = usuarios.id_persona')
+               ->where($consulta)
+               ->get();
+        return $query->result();
 	}
 
 	public function getClientesId($id)

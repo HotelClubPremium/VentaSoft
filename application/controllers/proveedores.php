@@ -6,6 +6,7 @@ class Proveedores extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('proveedores_model');
+		$this->load->model('productos_model');
 	}
 
 	
@@ -17,7 +18,7 @@ class Proveedores extends CI_Controller {
 		$data['viewNave']	        =         $folder_nav;
 		$data['nave']		    	=		         $nav;
 		$data['contenido']			=		      'index';
-		$data['datos']				=		$this->proveedores_model->getProveedores();
+		$data['datos']				=		       $this->proveedores_model->getProveedores();
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
@@ -120,6 +121,15 @@ class Proveedores extends CI_Controller {
 
 	public function delete($id=null,$folder_nav=null,$nav=null)
 	{
+		$consulta_productoProveedor= $this->productos_model->productoProveedor($id); 
+
+       if ($consulta_productoProveedor == true ) {
+           $this->session->set_flashdata('ControllerMessage','Registro no eliminado, Prooveedor posee productos registrados');
+		   redirect(base_url().'proveedores/index/'.$folder_nav.'/'.$nav,301);
+	   }
+	   else
+	   {
+
 		$consulta= $this->proveedores_model->deleteProveedor($id);
 				
 		if ($consulta == true) {
@@ -129,12 +139,13 @@ class Proveedores extends CI_Controller {
 			$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
 			redirect(base_url().'proveedores/index/'.$folder_nav.'/'.$nav,301);
 		}
+	    }
 
 		$data['titulo']				=		'VentaSoft proveedores';
 		$data['viewControlador']	=		          'proveedores';
-		$data['viewNave']	        =                 $folder_nav;
-		$data['nave']		    	=		                 $nav;
-		$data['contenido']			=		             'delete';
+		$data['viewNave']	        =                   $folder_nav;
+		$data['nave']		    	=		                   $nav;
+		$data['contenido']			=		               'delete';
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 

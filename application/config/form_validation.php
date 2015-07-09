@@ -35,7 +35,20 @@ $config = array(
 			array('field' => 'cantidad', 	   'label'=> 'cantidad',            'rules' => 'required|numeric|trim|xss_clean'),			
 			array('field' => 'valor_producto', 'label'=> 'valor_producto', 		'rules' => 'required|numeric|trim|xss_clean'),	
 			array('field' => 'id_categoria',   'label'=> 'id_categoria', 		'rules' => 'required|trim|xss_clean'),
+		    array('field' => 'estado',         'label'=> 'estado',      		'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'id_proveedor',   'label'=> 'id_proveedor', 		'rules' => 'required|trim|xss_clean')		
+	
+	                                ),
+
+	    'vali_Productos_adicionar'	=> array(
+			array('field' => 'id_producto',	           'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'nom_producto',           'label'=> 'nom_producto', 		'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'cantidad', 	           'label'=> 'cantidad',            'rules' => 'required|numeric|trim|xss_clean'),	
+			array('field' => 'cantidad_adicionada',    'label'=> 'cantidad_adicionada', 'rules' => 'required|numeric|trim|xss_clean'),		
+			array('field' => 'valor_producto',         'label'=> 'valor_producto', 		'rules' => 'required|numeric|trim|xss_clean'),	
+			array('field' => 'id_categoria',           'label'=> 'id_categoria', 		'rules' => 'required|trim|xss_clean'),
+		    array('field' => 'estado',                 'label'=> 'estado',      		'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'id_proveedor',           'label'=> 'id_proveedor', 		'rules' => 'required|trim|xss_clean')	
 	
 	                                ),
 
@@ -63,6 +76,7 @@ $config = array(
 			array('field' => 'user', 	           'label'=> 'user',                'rules' => 'required|is_string|trim|xss_clean'),			
 			array('field' => 'acceso',             'label'=> 'acceso', 	        	'rules' => 'required|numeric|trim|xss_clean')	
 	                             ),
+
 	    'vali_Usuarios'	=> array(
 			array('field' => 'rol',            'label'=> 'rol',         		'rules' => 'required|is_string|trim|xss_clean'),
 			array('field' => 'user', 	       'label'=> 'user',                'rules' => 'required|is_string|trim|xss_clean'),			

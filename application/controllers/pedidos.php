@@ -1,24 +1,46 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Productos extends CI_Controller {
+class Pedidos extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('productos_model');
-		$this->load->model('proveedores_model');
+		$this->load->model('roles_model');
 		$this->load->model('categorias_model');
+		$this->load->model('clientes_model');
+		$this->load->model('usuarios_model');
+	    $this->load->model('proveedores_model');
 	}
 
 
 	public function index($folder_nav=null,$nav=null)
 	{   
+		   $this->clientes($folder_nav,$nav); 
+	}
+
+
+	public function clientes($folder_nav=null,$nav=null)
+	{   
 
 		$data['titulo']				=    'VentaSoft Productos';
-		$data['viewControlador']	=		       'productos';
+		$data['viewControlador']	=		         'pedidos';
 		$data['viewNave']	        =              $folder_nav;
 		$data['nave']		    	=		              $nav;
-		$data['contenido']			=		           'index';
+		$data['contenido']			=		        'clientes';
+		$data['datos']				=	    $this->clientes_model->getClientes();
+		$data['roles'] 	         	=		$this->roles_model->getRoles();
+		$this->load->view('masterPage/masterPage', $data);
+	}
+
+	public function productos($id=null,$folder_nav=null,$nav=null)
+	{   
+
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		         'pedidos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=		       'productos';
 		$data['datos']				=		$this->productos_model->getProductos();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
 		$data['categorias'] 		=		$this->categorias_model->getCategorias();
@@ -249,6 +271,25 @@ class Productos extends CI_Controller {
         //todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
  	    $data['categorias'] 		=		$this->categorias_model->getCategorias();
         $data['proveedores']		=		$this->proveedores_model->getProveedores();
+		$this->load->view('masterPage/masterPage', $data);
+		
+	}
+
+
+	public function search_clientes($folder_nav=null,$nav=null)   
+       {
+
+		
+		        $criterio             = $this->input->post("criterio");
+			    $valor                =    $this->input->post("valor");
+		$data['titulo']				  =                    'Ventasoft';
+		$data['viewControlador']	  =		                 'pedidos';
+		$data['viewNave']	          =                    $folder_nav;
+		$data['nave']		    	  =		                      $nav;
+		$data['contenido']			  =		         'search_clientes';
+		$data['datos']				  =		$this->usuarios_model->searchClientes($criterio,$valor);
+		$data['roles'] 	         	  =		$this->roles_model->getRoles();
+      
 		$this->load->view('masterPage/masterPage', $data);
 		
 	}

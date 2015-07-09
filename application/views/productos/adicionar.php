@@ -25,7 +25,7 @@
 				  	    <div class="row">
 												  <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Productos <small>Actualizar</small></h1>
+													  	 <h1>Gestion Productos <small>Adicionar Unidades</small></h1>
 													  </div>
 												  </div>
 									  
@@ -88,12 +88,22 @@
 																		    </div>
 
 																		    <div class="form-group">
-																		        <label class="control-label col-xs-4" >Cantidad (*):</label>
+																		        <label class="control-label col-xs-4" >Cantidad Actual (*):</label>
 																		        <div class="col-xs-4">
 																		          <input type="number" name="cantidad" placeholder="cantidad" class="form-control" value="<?php echo $datos->cantidad?>">
 																		        </div>
 																		         <div class="col-xs-4">
 																		            <span class="help-block"><?php echo form_error('cantidad'); ?></span>
+                                                                               </div>
+																		    </div>
+
+																		     <div class="form-group">
+																		        <label class="control-label col-xs-4" >Cantidad Adicionada (*):</label>
+																		        <div class="col-xs-4">
+																		          <input type="number" name="cantidad_adicionada" placeholder="cantidad adicionada" class="form-control" value="<?php echo set_value("cantidad_adicionada")?>">
+																		        </div>
+																		         <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('cantidad_adicionada'); ?></span>
                                                                                </div>
 																		    </div>
 

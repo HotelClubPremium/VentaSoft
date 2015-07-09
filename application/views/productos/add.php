@@ -107,6 +107,19 @@
                                                                                </div>
 																		    </div>
 
+																		    <div class="form-group">
+																		        <label class="control-label col-xs-4">Estado (*):</label>
+																		        <div class="col-xs-4">
+                                                                                        <select name="estado" id="estado"   class="form-control">
+																						    <option value="Activo">Activo</option>
+																							<option value="Inactivo">Inactivo</option>	
+																						</select>
+                                                                                </div>
+																		        <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('estado'); ?></span>
+                                                                               </div>
+																		    </div>
+
 																		      <div class="form-group">
 																		        <label class="control-label col-xs-4">Categoria (*):</label>
 																		        <div class="col-xs-4">

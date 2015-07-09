@@ -28,7 +28,7 @@
 				      	             
 												 <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Productos <small>Buscar</small></h1>
+													  	 <h1>Gestion Productos <small></small></h1>
 													  </div>
 												  </div>
 									          
@@ -44,7 +44,8 @@
 								        $folder_nav= $viewNave;
 								       
 								 ?>
-                                                          <?php 
+
+									                               <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
 																		echo form_open_multipart('productos/search/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
@@ -66,6 +67,8 @@
 															    	  <?php 
 																	   echo form_close();
 												                     ?>  
+
+
 								<div class="panel panel-default">
 												   <div class="panel-heading">
 													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>productos/add/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
@@ -123,16 +126,78 @@
 																							}
 																			      ?>	
 						
-																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true" title="Editar Producto" href="<?php echo base_url()?>productos/update/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="if(confirmarEliminar() == false) return false" title="Eliminar Producto" href="<?php echo base_url()?>productos/delete/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a><span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-plus" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a></td>
+																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true"  title="Editar Producto" href="<?php echo base_url()?>productos/update/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span> <a class="glyphicon glyphicon-trash" aria-hidden="true"  onclick="if(confirmarEliminar() == false) return false" title="Eliminar Producto" href="<?php echo base_url()?>productos/delete/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> <span class="glyphicon glyphicon-option-horizontal"></span> <a class="glyphicon glyphicon-plus" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
 																	</tr>
 																<?php } 
 																?>
 															</table> 
-								                  </div>
+								                </div>
 								</div>
 							</div>	
+
+                      <section id="services">
+        <div class="container">
+            <div class="box first">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-apple icon-md icon-color1"></i>
+                            <h4>iOS development</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-android icon-md icon-color2"></i>
+                            <h4>Android development</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-windows icon-md icon-color3"></i>
+                            <h4>Windows Phone development</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-html5 icon-md icon-color4"></i>
+                            <h4>Ruby on Rails development</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-css3 icon-md icon-color5"></i>
+                            <h4>Javascript development</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-thumbs-up icon-md icon-color6"></i>
+                            <h4>Responsive web design</h4>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.row-->
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+
+
+										
 
 				      </div>  <!--/cierre vcol md9--> 
                 </div>
 			</div>
 </div>	
+
+
+
+
+
+
+
+

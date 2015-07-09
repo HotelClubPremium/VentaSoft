@@ -2,33 +2,31 @@
 			<div class="grid_12">
 				<div class="row">
 				      <div class="col-md-2">
-				      	    <div class="panel panel-info" >
-                                <div class="panel-heading">
-                                    <div class="panel-title">Bienvenido ¡</div>
-                                </div> 
-                                <div style="padding-top:10px" class="panel-body" >
-                                	 <div class="form-group">
-										     <label> Rol :</label> 
-										      <input type="text" class="form-control" disabled value='<?=$this->session->userdata('rol')?>'></input>  
-										     <label> Usuario :</label> 
-										     <input type="text" class="form-control" disabled value='<?=$this->session->userdata('user')?>'></input>  
-										  </div>
-								      <hr> </hr>
-								      <?=anchor(base_url().'login/logout_ci', 'Cerrar sesión')?>
-								   
-                                </div>
+				      	     <div class="panel panel-info" >
+	                                <div class="panel-heading">
+	                                    <div class="panel-title">Bienvenido !</div>
+	                                </div> 
+	                                <div style="padding-top:10px" class="panel-body" >
+	                                	 <div class="form-group">
+											     <label> Rol :</label> 
+											      <input type="text" class="form-control" disabled value='<?=$this->session->userdata('rol')?>'></input>  
+											     <label> Usuario :</label> 
+											     <input type="text" class="form-control" disabled value='<?=$this->session->userdata('user')?>'></input>  
+											  </div>
+									      <hr> </hr>
+									      <?=anchor(base_url().'login/logout_ci', 'Cerrar sesión')?>
+									   
+	                                </div>
                             </div>
-		 	          </div> <!--/cierre vcol md2-->
+		 	          </div>
 
-				 <div class="col-md-9">
+				      <div class="col-md-9">  <!--/ abre contenido --> 
 
-				     
-		                <div class="row">
 
-				      	             
-												 <div class="panel panel-default">
+				      	<div class="row">
+												  <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Productos <small>Buscar</small></h1>
+													  	 <h1>Productos <small>Agregar al carrito</small></h1>
 													  </div>
 												  </div>
 									          
@@ -44,7 +42,8 @@
 								        $folder_nav= $viewNave;
 								       
 								 ?>
-                                                          <?php 
+
+									                               <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
 																		echo form_open_multipart('productos/search/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
@@ -66,6 +65,8 @@
 															    	  <?php 
 																	   echo form_close();
 												                     ?>  
+
+
 								<div class="panel panel-default">
 												   <div class="panel-heading">
 													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>productos/add/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
@@ -123,7 +124,7 @@
 																							}
 																			      ?>	
 						
-																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true" title="Editar Producto" href="<?php echo base_url()?>productos/update/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true" onclick="if(confirmarEliminar() == false) return false" title="Eliminar Producto" href="<?php echo base_url()?>productos/delete/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a><span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-plus" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a></td>
+																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true"  title="Editar Producto" href="<?php echo base_url()?>productos/update/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true"  onclick="if(confirmarEliminar() == false) return false" title="Eliminar Producto" href="<?php echo base_url()?>productos/delete/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-plus" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
 																	</tr>
 																<?php } 
 																?>
@@ -136,3 +137,4 @@
                 </div>
 			</div>
 </div>	
+

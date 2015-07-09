@@ -28,7 +28,7 @@
 				      	             
 												 <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Proveedores <small>Buscar</small></h1>
+													  	 <h1>Gestion Clientes <small>Buscar</small></h1>
 													  </div>
 												  </div>
 									          
@@ -46,21 +46,17 @@
 								 ?>
                                                           <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
-																		echo form_open_multipart('Proveedores/search/'.$folder_nav.'/'.$nav,$atributos);
+																		echo form_open_multipart('pedidos/search_clientes/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
 				                                                            	     <label class="control-label">Busqueda por:</label>
 				                                                            	     <select name="criterio" id="criterio"   class="form-control">
-				                                                                          <option value="id_proveedor" >Id</option>
-				                                                                          <option value="nom_proveedor" selected >Nombre</option>
-				                                                                          <option value="ape_proveedor">Apellido</option>
-				                                                                          <option value="telefono" >Telefono</option>
-				                                                                          <option value="correo" >Correo</option>
+				                                                                          <option value="id_usuario" >Id</option>
+				                                                                          <option value="user" >Usuario</option>
+				                                                                          <option value="acceso" >Acceso</option>
 				                                                            	     </select>
 
-
-
-																		 		    <input type="text"  name="valor"  value="<?php echo set_value("valor")?>"  class="form-control" placeholder="Buscar proveedor">
-																		 		    <input type="submit" value="Buscar" title="Buscar proveedor" class="btn btn-info">
+																		 		    <input type="text"  name="valor"  value="<?php echo set_value("valor")?>"  class="form-control" placeholder="Buscar cliente">
+																		 		    <input type="submit" value="Buscar" title="Buscar clientes" class="btn btn-info">
 																		 		  
 															    	  <?php 
 																	   echo form_close();
@@ -69,27 +65,45 @@
 
 								<div class="panel panel-default">
 												   <div class="panel-heading">
-													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>proveedores/add/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
+													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>usuarios/add/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
 													 </div>
 												  <div class="panel-body">                                                                               
 															    <table class="table table-hover">
 																<tr>
 																	<th>Id</th>
-																	<th>Nombre</th>
-																	<th>Apellidos</th>
-																	<th>Telefono</th>
-																	<th>Correo</th>
+																	<th>Rol</th>
+																	<th>Usuario</th>
+																	<th>Acceso</th>
+																	<th>Id Persona</th>
+																	<th>Nombre </th>
 																	<th>Acciones</th>
 																</tr>
 																<?php foreach ($datos as $dato) {?>
 																	<tr>
-																		<td><?php echo $dato->id_proveedor;?></td>
-																		<td><?php echo $dato->nom_proveedor;?></td>
-																		<td><?php echo $dato->ape_proveedor;?></td>
-																		<td><?php echo $dato->telefono;?></td>
-																		<td><?php echo $dato->correo;?></td>
-						
-																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true"  title="Editar Proveedor" href="<?php echo base_url()?>proveedores/update/<?php echo $dato->id_proveedor?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true"  onclick="if(confirmarEliminar() == false) return false" title="Eliminar Proveedor" href="<?php echo base_url()?>proveedores/delete/<?php echo $dato->id_proveedor?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a></td>
+																		<td><?php echo $dato->id_usuario;?></td>
+																	            <!-- obtengo  el id de categoria--> 
+                                                                                <!-- recorro todas las categoria y comparo id--> 
+                                                                                <!-- s coinciden muestro el nombre de la categoria--> 
+
+                                                                                 <?php
+																					$rol = $dato->rol;
+																					foreach($roles as $fila)
+																					{
+                                                                                      if ($fila -> nom_rol == $rol)
+																						 {
+																				  ?>
+																				          <td><?=$fila -> nom_rol ?></td> 
+																				  <?php 
+																						 }
+																								
+																							}
+																			      ?>
+																	    <td><?php echo $dato->user; ?></td>
+																		<td><?php echo $dato->acceso; ?></td>
+																		<td><?php echo $dato->id_persona; ?></td>
+																		<td><?php echo $dato->nom_persona; ?></td>
+                                                                            
+																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true"  title="Editar Cliente" href="<?php echo base_url()?>usuarios/update/<?php echo $dato->id_usuario?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true"  onclick="if(confirmarEliminar() == false) return false" title="Eliminar Cliente" href="<?php echo base_url()?>usuarios/delete/<?php echo $dato->id_usuario?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a></td>
 																	</tr>
 																<?php } 
 																?>

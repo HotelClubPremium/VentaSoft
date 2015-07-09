@@ -25,7 +25,7 @@
 				  	    <div class="row">
 												  <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Gestion Productos <small>Actualizar</small></h1>
+													  	 <h1>Gestion Usuarios <small>Actualizar</small></h1>
 													  </div>
 												  </div>
 									  
@@ -37,7 +37,7 @@
 								          <div class="panel-body">  
 
 								          	                  	<?php 
-																	$atributos = array('productos' => 'form','name'=>'form' ,'class'=>'form-horizontal');
+																	$atributos = array('usuarios' => 'form','name'=>'form' ,'class'=>'form-horizontal');
 																	echo form_open_multipart(null,$atributos);
 															    ?>
 																			<?php if ($this->session->flashdata('ControllerMessage') != '') { ?>
@@ -56,82 +56,131 @@
 															     	   <form class="form-horizontal">
 							
 																		</form>
-
-	                                                               
 																	       <div class="form-group">
-																		        <label class="control-label col-xs-4">Id Producto (*):</label>
-																		        <div class="col-xs-4">
-																		         <input type="text" name="id_producto" placeholder="id producto" class="form-control" value="<?php echo $datos->id_producto?>">
+																		       <div class="col-xs-4">
+																		         <input type="hidden" name="id_persona" placeholder="id persona" class="form-control" value="<?php echo $datos->id_persona?>">
 																		        </div>
 																		        <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('id_producto'); ?></span>
+																		            <span class="help-block"><?php echo form_error('id_persona'); ?></span>
                                                                                </div>
 																		    </div>
                                                                             <div class="form-group">
 																		        <label class="control-label col-xs-4">Nombre (*):</label>
 																		        <div class="col-xs-4">
-																		          <input type="text" name="nom_producto" placeholder="nombre" class="form-control" value="<?php echo $datos->nom_producto?>">
+																		          <input type="text" name="nom_persona" placeholder="nombre" class="form-control" value="<?php echo $datos->nom_persona?>">
 																		        </div>
 																		        <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('nom_producto'); ?></span>
-                                                                               </div>
-																		    </div>
-
-																		     <div class="form-group">
-																		        <label class="control-label col-xs-4">Descripcion :</label>
-																		        <div class="col-xs-4">
-																		            <textarea rows="3"  name="descripcion"  placeholder="descripcion" class="form-control" ><?php echo $datos->descripcion?></textarea>
-																		        </div>
-																		         <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('descripcion'); ?></span>
+																		            <span class="help-block"><?php echo form_error('nom_persona'); ?></span>
                                                                                </div>
 																		    </div>
 
 																		    <div class="form-group">
-																		        <label class="control-label col-xs-4" >Cantidad (*):</label>
+																		        <label class="control-label col-xs-4">Apellidos (*):</label>
 																		        <div class="col-xs-4">
-																		          <input type="number" name="cantidad" placeholder="cantidad" class="form-control" value="<?php echo $datos->cantidad?>">
+																		          <input type="text" name="ape_persona" placeholder="apellidos" class="form-control" value="<?php echo $datos->ape_persona?>">
 																		        </div>
-																		         <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('cantidad'); ?></span>
+																		        <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('ape_persona'); ?></span>
                                                                                </div>
 																		    </div>
 
 																		     <div class="form-group">
-																		        <label class="control-label col-xs-4" >Vlr Unitario (*):</label>
-																		        <div class="col-xs-4">
-																		        <input type="text" name="valor_producto" class="form-control" value="<?php echo $datos->valor_producto?>">
-																		        </div>
-                                                                                <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('valor_producto'); ?></span>
-                                                                               </div>
-																		    </div>
-
-																		      <div class="form-group">
-																		        <label class="control-label col-xs-4">Categoria (*):</label>
+																		        <label class="control-label col-xs-4">Sexo (*):</label>
 																		        <div class="col-xs-4">
                                                                                 
 
-																				       <select name="id_categoria" id="id_categoria"   class="form-control">
+																				       <select name="sexo" id="sexo"   class="form-control">
+																							<?php
+																							
+
+																								if ($datos->sexo == "m") 
+																								{
+																								?>
+		                                                                                                  <option value="m" selected >Masculino</option>
+		                                                                                                  <option value="f"  >Femenino</option>
+                                                                                                <?php 
+																								}else{
+																								 ?>
+																									       <option value="m"  >Masculino</option>
+		                                                                                                   <option value="f" selected >Femenino</option>
+																							   <?php
+																							    }
+																							  
+																							?>		
+																						</select>
+
+																		        </div>
+																		        <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('sexo'); ?></span>
+                                                                               </div>
+																		    </div>
+
+																		    <div class="form-group">
+																		        <label class="control-label col-xs-4">Fecha Nacimiento (*)</label>
+																		        <div class="col-xs-4">
+																		            <input type="date" name="fecha_nacimiento" class="form-control" value="<?php echo $datos->fecha_nacimiento?>">
+																		        </div>
+																		         <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('fecha_nacimiento'); ?></span>
+                                                                               </div>
+																		    </div>
+
+																		   <div class="form-group">
+																		        <label class="control-label col-xs-4">Direccion (*)</label>
+																		        <div class="col-xs-4">
+																		        <input type="text" name="direccion" placeholder="direccion" class="form-control" value="<?php echo $datos->direccion?>">
+																		        </div>
+																		         <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('direccion'); ?></span>
+                                                                               </div>
+																		    </div>
+
+																		    <div class="form-group">
+																		        <label class="control-label col-xs-4">Correo (*):</label>
+																		        <div class="col-xs-4">
+																		        <input type="email" name="correo"  placeholder="correo" class="form-control" value="<?php echo $datos->correo?>">
+																		        </div>
+																		         <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('correo'); ?></span>
+                                                                               </div>
+																		    </div>										   
+
+																		     <div class="form-group">
+																		        <label class="control-label col-xs-4" >Telefono (*):</label>
+																		        <div class="col-xs-4">
+																		        <input type="text" name="telefono" placeholder="telefono" class="form-control" value="<?php echo $datos->telefono?>">
+																		        </div>
+                                                                                <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('telefono'); ?></span>
+                                                                               </div>
+																		    </div> 
+
+
+																		        <div class="form-group">
+																		        <label class="control-label col-xs-4">Rol (*):</label>
+																		        <div class="col-xs-4">
+                                                                                
+
+																				       <select name="rol" id="rol"   class="form-control">
 																							<?php
 																							//obtengo el id de categoria
 																							//recorro todas las categoria 
 																							//si  coinciden  ese es el seleccionado (selected) obtengo el nombre para mostrarlo y el id lo dejo como value 
 																							// si no lo muestro  su nombre y le asigno el value
-																								$cate = $datos->id_categoria;
+																								$rol = $datos->rol;
 																							  
-																							foreach($categorias as $fila)
+																							foreach($roles as $fila)
 																							{
 
-																								if ($fila -> id_categoria == $cate  ) 
+																								if ($fila->nom_rol == $rol  ) 
 																								{
 																								?>
-                                                                                                 <option value="<?=$fila -> id_categoria ?>" selected ><?=$fila -> nom_categoria ?></option>
+                                                                                                 <option value="<?=$fila ->nom_rol?>" selected ><?=$fila ->nom_rol ?></option>
                                                                                                 <?php 
 																								}else{
 																								 ?>
 																							
-																								<option value="<?=$fila -> id_categoria ?>"><?=$fila -> nom_categoria ?></option>
+																								<option value="<?=$fila ->nom_rol?>"><?=$fila ->nom_rol ?></option>
 																							   <?php
 																							    }
 																							    }
@@ -140,40 +189,61 @@
 
 																		        </div>
 																		        <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('id_categoria'); ?></span>
+																		            <span class="help-block"><?php echo form_error('rol'); ?></span>
                                                                                </div>
 																		    </div>
 
-																		    <div class="form-group">
-																		        <label class="control-label col-xs-4">Proveedor (*):</label>
-																		        <div class="col-xs-4">
-																		        	<select name="id_proveedor"  id="id_proveedor" class="form-control">
-																							<?php 
-																							// si no lo muestro  su nombre y le asigno el value
-																								$prove = $datos->id_proveedor;
-																							  
-																							foreach($proveedores as $fila)
-																							{
 
-																								if ($fila -> id_proveedor == $prove) {
+
+																		     <div class="form-group">
+																		        <label class="control-label col-xs-4">Usuario (*):</label>
+																		        <div class="col-xs-4">
+																		          <input type="text" name="user" placeholder="usuario" class="form-control" value="<?php echo $datos->user?>">
+																		        </div>
+																		        <div class="col-xs-4">
+																		            <span class="help-block"><?php echo form_error('user'); ?></span>
+                                                                               </div>
+																		    </div>
+
+																		        <div class="form-group">
+																		        <label class="control-label col-xs-4">Acceso (*):</label>
+																		        <div class="col-xs-4">
+                                                                                
+
+																				       <select name="acceso" id="acceso"   class="form-control">
+																							<?php
+																							
+
+																								if ($datos->acceso == "0") 
+																								{
 																								?>
-                                                                                             <option value="<?=$fila -> id_proveedor ?>" selected><?=$fila -> nom_proveedor ?></option>
+		                                                                                                  <option value="0" selected >Inabilitado</option>
+		                                                                                                  <option value="1"  >Habilitado</option>
                                                                                                 <?php 
 																								}else{
 																								 ?>
-																							
-																								 <option value="<?=$fila -> id_proveedor ?>"><?=$fila -> nom_proveedor ?></option>
+																									        <option value="0" >Inabilitado</option>
+		                                                                                                    <option value="1"  selected >Habilitado</option>
 																							   <?php
 																							    }
-																							    }
+																							  
 																							?>		
 																						</select>
-																		       </div>
+
+																		        </div>
 																		        <div class="col-xs-4">
-																		            <span class="help-block"><?php echo form_error('id_proveedor'); ?></span>
+																		            <span class="help-block"><?php echo form_error('acceso'); ?></span>
                                                                                </div>
 																		    </div>
 
+
+
+																		     
+
+
+
+
+																		    
 																			    <div class="form-group">
 																			        <div class="col-xs-offset-1 col-xs-10">
 																			        	
@@ -188,7 +258,6 @@
 																			        	  <input type="submit" value="Guardar Cambios" title="Guardar Cambios" class="btn btn-success">
 																			       </div>
 																			    </div>
-
 
                                                                          <?php 
 															 	         echo form_close();

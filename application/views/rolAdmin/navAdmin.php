@@ -19,8 +19,7 @@
 				<li class="active"><a href="<?php echo base_url()?>admin">Inicio</a></li>				
                 <li><a href="<?php echo base_url()?>proveedores/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Proveedores</a></li>
                 <li><a href="<?php echo base_url()?>productos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Productos</a></li>
-				<li><a href="<?php echo base_url()?>clientes/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Clientes</a></li>
-                <li><a href="<?php echo base_url()?>empleados/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Empleados</a></li>  
+                <li><a href="<?php echo base_url()?>pedidos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Pedidos</a></li>  
 				<li class      ="dropdown">
                 <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Vendedores<b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">

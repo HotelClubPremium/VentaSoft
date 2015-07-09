@@ -23,6 +23,7 @@ class Usuarios_model extends CI_Model {
 				->get();
 		return $query->result();
 	}
+
 	public function getUsuariosJoin()
 	{
 		$query = $this->db
@@ -38,30 +39,56 @@ class Usuarios_model extends CI_Model {
 // SELECT * FROM blogs
 // JOIN comentarios ON comentarios.id = blogs.id
 
-
-
 	public function getUsuarioId($id)
 	{
 		$consulta=array('id_usuario'=>$id);
+		$query = $this->db
+		       ->select('usuarios.id_usuario,usuarios.rol,usuarios.user,usuarios.acceso,usuarios.id_persona,personas.nom_persona,personas.ape_persona,personas.sexo,personas.fecha_nacimiento,personas.direccion,personas.correo,personas.telefono')
+               ->from('usuarios')
+               ->join('personas','personas.id_persona = usuarios.id_persona')
+               ->where($consulta)
+               ->get();
+		return $query->row();
+	}
+
+public function searchIdUsuario($id)
+	{
+		$consulta=array('id_usuario'=>$id);
 		$query=$this->db
-				->select('*')
+				->select('id_persona')
 				->from('usuarios')
 				->where($consulta)
 				->get();
 		return $query->row();
 	}
+	
 
 	public function searchUsuarios($criterio,$valor)
 	{
-		$consulta=array($criterio=>$valor);
+        $consulta=array($criterio=>$valor);
+		$query = $this->db
+		       ->select('usuarios.id_usuario,usuarios.rol,usuarios.user,usuarios.acceso,usuarios.id_persona,personas.nom_persona')
+               ->from('usuarios')
+               ->join('personas','personas.id_persona = usuarios.id_persona')
+               ->like($consulta)
+               ->get();
+        return $query->result();
 		
+	}
 
-		$query=$this->db
-				->select('*')
-				->from('usuarios')
-				->like($consulta)
-				->get();
-		return $query->result();
+
+	public function searchClientes($criterio,$valor)
+	{
+        $consulta=array($criterio=>$valor,
+        	            "rol"=>"Cliente");
+		$query = $this->db
+		       ->select('usuarios.id_usuario,usuarios.rol,usuarios.user,usuarios.acceso,usuarios.id_persona,personas.nom_persona')
+               ->from('usuarios')
+               ->join('personas','personas.id_persona = usuarios.id_persona')
+               ->like($consulta)
+               ->get();
+        return $query->result();
+		
 	}
 
 	public function validarExistenciaUsuarioId($id)
@@ -92,7 +119,7 @@ class Usuarios_model extends CI_Model {
 
 	public function deleteUsuario($id)
 	{
-		$this->db->where('id_persona', $id);
+		$this->db->where('id_usuario', $id);
 		$this->db->delete('usuarios');
 		return true;
 	}
