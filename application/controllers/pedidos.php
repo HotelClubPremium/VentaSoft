@@ -35,7 +35,6 @@ class Pedidos extends CI_Controller {
 
 	public function productos($id=null,$folder_nav=null,$nav=null)
 	{   
-
 		$data['titulo']				=    'VentaSoft Productos';
 		$data['viewControlador']	=		         'pedidos';
 		$data['viewNave']	        =              $folder_nav;
@@ -44,7 +43,6 @@ class Pedidos extends CI_Controller {
 		$data['datos']				=		$this->productos_model->getProductos();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
 		$data['categorias'] 		=		$this->categorias_model->getCategorias();
-		$data['proveedores']		=		$this->proveedores_model->getProveedores();
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
@@ -62,8 +60,6 @@ class Pedidos extends CI_Controller {
 
 			if ($this->form_validation->run('vali_Productos')) { //ejecuto el archivo de form_validation
 				
-              
-
 				$datos =array(
 					'id_producto'          =>$this->input->post("id_producto"),
 					'nom_producto'         =>$this->input->post("nom_producto"),

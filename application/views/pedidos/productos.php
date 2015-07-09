@@ -51,12 +51,10 @@
 				                                                            	     <select name="criterio" id="criterio"   class="form-control">
 				                                                                          <option value="id_producto" >Id</option>
 				                                                                          <option value="nom_producto" selected >Nombre</option>
-				                                                                          <option value="cantidad" >Cantidad</option>
 				                                                                          <option value="valor_producto" >Valor unitario</option>
 				                                                                          <option value="descripcion" >Descripcion</option>
 				                                                                          <option value="estado" >Estado</option>
 				                                                                          <option value="id_categoria" >Categoria</option>
-				                                                                          <option value="id_proveedor" >Proveedor</option>
 				                                                            	     </select>
 
 																		 		    <input type="text"  name="valor"  value="<?php echo set_value("valor")?>"  class="form-control" placeholder="Buscar producto">
@@ -64,7 +62,7 @@
 																		 		  
 															    	  <?php 
 																	   echo form_close();
-												                     ?>  
+												                      ?>  
 
 
 								<div class="panel panel-default">
@@ -76,56 +74,50 @@
 																<tr>
 																	<th>Id</th>
 																	<th>Nombre </th>
-																	<th>Cantidad</th>
 																	<th>Valor unitario</th>
 																	<th>Descripcion</th>
-																	<th>Estado</th>
 																	<th>Categoria</th>
-																	<th>Proveedor</th>
+																	<th>Unidades</th>
 																	<th>Acciones</th>
 																</tr>
 																<?php foreach ($datos as $dato) {?>
-																	<tr>
-																		<td><?php echo $dato->id_producto;?></td>
-																		<td><?php echo $dato->nom_producto;?></td>
-																		<td><?php echo $dato->cantidad; ?></td>
-																		<td><?php echo $dato->valor_producto; ?></td>
-																		<td><?php echo $dato->descripcion; ?></td>
-																		<td><?php echo $dato->estado; ?></td>
-                                                                                <!-- obtengo  el id de categoria--> 
-                                                                                <!-- recorro todas las categoria y comparo id--> 
-                                                                                <!-- s coinciden muestro el nombre de la categoria--> 
 
-                                                                                 <?php
-																					$cate = $dato->id_categoria;
-																					foreach($categorias as $fila)
-																					{
-                                                                                      if ($fila -> id_categoria == $cate )
-																						 {
-																				  ?>
-																				          <td><?=$fila -> nom_categoria ?></td> 
-																				  <?php 
-																						 }
-																								
-																							}
-																			      ?>
-                                                                                    <!-- los mismos procesos q con  categoria--> 
-																			       <?php
-																					$prove = $dato->id_proveedor;
-																					foreach($proveedores as $fila)
-																					{
-                                                                                      if ($fila -> id_proveedor == $prove )
-																						 {
-																				  ?>
-																				          <td><?=$fila -> nom_proveedor ?></td> 
-																				  <?php 
-																						 }
-																								
-																							}
-																			      ?>	
-						
-																		<td><a class="glyphicon glyphicon-pencil" aria-hidden="true"  title="Editar Producto" href="<?php echo base_url()?>productos/update/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"></a>  <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-trash" aria-hidden="true"  onclick="if(confirmarEliminar() == false) return false" title="Eliminar Producto" href="<?php echo base_url()?>productos/delete/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> <span class="glyphicon glyphicon-option-horizontal"></span>     <a class="glyphicon glyphicon-plus" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
-																	</tr>
+																  <?php 
+																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right');
+																		echo form_open_multipart('pedidos/add_carrito/'.$folder_nav.'/'.$nav,$atributos);
+																    ?>
+  
+																  
+																				<tr>
+																					<td><?php echo $dato->id_producto;?></td>
+																					<td><?php echo $dato->nom_producto;?></td>
+																					<td><?php echo $dato->valor_producto; ?></td>
+																					<td><?php echo $dato->descripcion; ?></td>
+			                                                                                <!-- obtengo  el id de categoria--> 
+			                                                                                <!-- recorro todas las categoria y comparo id--> 
+			                                                                                <!-- s coinciden muestro el nombre de la categoria--> 
+
+			                                                                                 <?php
+																								$cate = $dato->id_categoria;
+																								foreach($categorias as $fila)
+																								{
+			                                                                                      if ($fila -> id_categoria == $cate )
+																									 {
+																							  ?>
+																							          <td><?=$fila -> nom_categoria ?></td> 
+																							  <?php 
+																									 }
+																											
+																										}
+																						      ?>  
+																					<td> <input type="number" name="unidades" placeholder="unidades" class="form-control" value="<?php echo set_value("unidades")?>"></td>    
+																					<td>  <a class="glyphicon glyphicons glyphicons-cart" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
+																				</tr>
+                                                                    <?php 
+																	   echo form_close();
+												                      ?>  
+			
+
 																<?php } 
 																?>
 															</table> 
