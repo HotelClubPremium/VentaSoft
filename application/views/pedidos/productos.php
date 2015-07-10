@@ -40,6 +40,7 @@
                                  <?php  // recibir por parametro el nombre del diretorio  y el nav que pedendiendo del rol (rolAdmin,rolCliente,rolVendedor)
 								        $nav= $nave;
 								        $folder_nav= $viewNave;
+
 								       
 								 ?>
 
@@ -67,8 +68,8 @@
 
 								<div class="panel panel-default">
 												    <div class="panel-heading">
-												      <br>
-													</div>
+												    	<a  href="<?php echo base_url()?>pedidos/get_carrito/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Ir a Carrito </a>
+												   </div>
 												  <div class="panel-body">                                                                               
 															    <table class="table table-hover">
 																<tr>
@@ -112,14 +113,20 @@
 																						      ?>
 
 
-																					<td> <input type="number" name="unidades" placeholder="unidades" class="form-control" value="<?php echo set_value("unidades")?>"></td>    
+																					<td>
+																						  <div class="col-xs-5">
+																					         <input type="number" name="unidades" placeholder="cant" value="0" class="form-control" value="<?php echo set_value("unidades")?>">
+																					      </div>
+																					</td>    
 
 																					<input type="hidden" name="id_producto"     value="<?php echo $dato->id_producto?>"></input> 
 																					<input type="hidden" name="nom_producto"    value="<?php echo $dato->nom_producto;?>"></input> 
 																					<input type="hidden" name="valor_producto"  value="<?php echo $dato->valor_producto;?>"></input> 
-																				
-
-												                                    <td><input type="submit" name="Guardar" value=""><img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-out.png"></img></input></td>
+			
+												                                    <td>
+																					    <input type='submit' value='' class="btn-group btn-lg" role="button" style='background:url("<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-out.png") center no-repeat;padding-left:20px;' />
+                                                                                    </td>
+												                                   	
 																				</tr>
                                                                     <?php 
 																	   echo form_close();

@@ -125,6 +125,13 @@ class Pedidos extends CI_Controller {
          redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
 		
 	}
+	public function quitar_producto_carrito($rowid=null,$folder_nav=null,$nav=null)
+	{   
+		 $this -> cart -> update(array('rowid' => $rowid, 'qty' => 0));
+         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+	}
+
+	
 
 	public function update($id=null,$folder_nav=null,$nav=null)
 	{

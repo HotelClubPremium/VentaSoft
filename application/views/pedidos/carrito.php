@@ -43,72 +43,74 @@
 								       
 								 ?>
 
-									                              
-
-
 								<div class="panel panel-default">
 												    <div class="panel-heading">
-												      <br>
+												     <a  href="<?php echo base_url()?>pedidos/productos/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Volver a Productos </a>
 													</div>
-												  <div class="panel-body">  
+												<div class="panel-body">  
                                                      
-                                                     <?php echo form_open(base_url().pedidos./.actualizar_carrito./. echo $folder_nav./.echo $nav)?>
+                                                     <?php echo form_open('pedidos/actualizar_carrito/'.$folder_nav.'/'.$nav)?>
 
-												      <table cellpadding="6" cellspacing="1" style="width:100%" border="0">
+															      <table class="table table-hover">
+																<tr>
+																	<th class="left">Cantidad</th>
+																	<th>Producto</th>
+																	<th>Valor Unitario</th>
+																	<th>Sub-total</th>
+																	<th>Acciones</th>
+																</tr>
 
-															<tr>
-															        <th>QTY</th>
-															        <th>Item Description</th>
-															        <th style="text-align:right">Item Price</th>
-															        <th style="text-align:right">Sub-Total</th>
-															</tr>
+																		<?php 
+																		$i = 1;
+																	    ?>
 
-															<?php $i = 1; ?>
+																		<?php foreach ($this->cart->contents() as $items): ?>
 
-															<?php foreach ($this->cart->contents() as $items): ?>
+																		        <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
+                                                                                
+																		        <tr>    
+																					    <td>
+																			                	<div class="col-xs-4">
+																			                	<?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '4', 'size' => '2', 'placeholder'=>'cant', 'class'=>'form-control','type'=>'number')); ?>
+																			                	</div>
+																		                </td>
+																		                <td>
+																		                        <?php echo $items['name']; ?>
+																		                </td>
+																		                <td>
+																		                	    <?php echo number_format($items['price'],2,',','.'); ?>
+																		                </td>
+																		                <td>$   
+																		                	    <?php echo number_format($items['subtotal'],2,',','.'); ?>
+																		                </td>
+																		                 <td>  
+																		                 	
+																		                	 <a aria-hidden="true"  title="Quitar Producto del Carrito" onclick="if(confirmarEliminar() == false) return false" title="Quitar del carrito" href="<?php echo base_url()?>pedidos/quitar_producto_carrito/<?php echo $items['rowid'];?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-in.png"></img></a>   
+																		                     
+																		                </td>
+																		        </tr>
 
-															        <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
+																		<?php $i++; ?>
 
-															        <tr>
-															                <td><?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>
-															                <td>
-															                        <?php echo $items['name']; ?>
+																		<?php endforeach; ?>
 
-															                        <?php if ($this->cart->has_options($items['rowid']) == TRUE): ?>
+																		<tr>
+																		        <td class="active"> </td>
+																		        <td class="active"> </td>
+																		        <td class="danger right"><strong>Total</strong> </td>
+																		        <td class="danger right">$<?php echo  number_format($this->cart->total(),2,',','.'); ?> </td>
+                                                                                <td class="active"> </td>
+																		        <td class="active"> </td>
+																		</tr>
 
-															                                <p>
-															                                        <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value): ?>
+																		</table>
 
-															                                                <strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />
-
-															                                        <?php endforeach; ?>
-															                                </p>
-
-															                        <?php endif; ?>
-
-															                </td>
-															                <td style="text-align:right"><?php echo number_format($items['price'],2,',','.'); ?></td>
-															                <td style="text-align:right">$<?php echo number_format($items['subtotal'],2,',','.'); ?></td>
-															        </tr>
-
-															<?php $i++; ?>
-
-															<?php endforeach; ?>
-
-															<tr>
-															        <td colspan="2"> </td>
-															        <td class="right"><strong>Total</strong></td>
-															        <td class="right">$<?php echo  number_format($this->cart->total(),2,',','.'); ?></td>
-															</tr>
-
-															</table>
-
-															<p><?php echo form_submit('', 'Update your Cart'); ?></p>  
-															<p><a aria-hidden="true"  title="Limpiar Carrito" href="<?php echo base_url()?>pedidos/limpiar_carrito/<?php echo  $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-tick.png"></img> </a></p>                                                                            
+															<p><?php echo form_submit('', 'Actualizar Carrito'); ?></p>  
+															<a aria-hidden="true"  title="Limpiar Carrito" href="<?php echo base_url()?>pedidos/limpiar_carrito/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-tick.png"></img></a>                                                                            
 															   
 
 
-								                  </div>
+								                 </div>
 								</div>
 							</div>	
 
