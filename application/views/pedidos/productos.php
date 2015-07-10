@@ -111,7 +111,7 @@
 																										}
 																						      ?>  
 																					<td> <input type="number" name="unidades" placeholder="unidades" class="form-control" value="<?php echo set_value("unidades")?>"></td>    
-																					<td>  <a class="glyphicon glyphicons glyphicons-cart" aria-hidden="true"  title="Adicionar Unidades de Productos" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
+																					<td>  <a      aria-hidden="true"  title="Agregar al carrito" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"><img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-out.png"></img></a> </td>
 																				</tr>
                                                                     <?php 
 																	   echo form_close();
