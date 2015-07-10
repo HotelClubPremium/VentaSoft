@@ -47,8 +47,10 @@ class Pedidos extends CI_Controller {
 	}
 
 
-	public function add($folder_nav=null,$nav=null)
+	public function add_carrito($folder_nav=null,$nav=null)
 	{
+		print_r($_POST);
+
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 			
                 $this->form_validation->set_message('required', 'campo  obligatorio');
@@ -58,36 +60,27 @@ class Pedidos extends CI_Controller {
 				$this->form_validation->set_message('max_length', 'Campo  debe tener un Maximo de %d Caracteres');
 				$this->form_validation->set_error_delimiters('<span>','</span>');
 
-			if ($this->form_validation->run('vali_Productos')) { //ejecuto el archivo de form_validation
+			if ($this->form_validation->run('vali_Carrito')) { //ejecuto el archivo de form_validation
 				
-				$datos =array(
-					'id_producto'          =>$this->input->post("id_producto"),
-					'nom_producto'         =>$this->input->post("nom_producto"),
-					'cantidad'             =>$this->input->post("cantidad"),
-					'valor_producto'       =>$this->input->post("valor_producto"),
-					'descripcion'          =>$this->input->post("descripcion"),
-					'estado'               =>$this->input->post("estado"),
-					'id_categoria'         =>$this->input->post("id_categoria"),
-					'id_proveedor'         =>$this->input->post("id_proveedor")
-					         );
+				
+					$data = array(
+					        'id'       =>$this->input->post("id_producto"),
+					        'qty'      =>$this->input->post("unidades"),
+					        'price'    =>$this->input->post("valor_producto"),
+					        'name'     =>$this->input->post("nom_producto")
+                                );
+
+                   $rsta = $this->cart->insert($data);
 
                      
-                     $id = $this->input->post("id_producto");
-                     $validar= $this->productos_model->validarExistenciaProductoId($id);
-				
-				    if ($validar == true) {
-							$this->session->set_flashdata('ControllerMessage','Producto registrado anteriormente, verifique el codigo e intentelo nuevamente');
-							redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
+				    if ($rsta == true) {
+						     $this->session->set_flashdata('ControllerMessage','Producto agregado al carrito satisfactoriamente');
+							 redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
 				    } else {
-							
-							   $consulta= $this->productos_model->insertProducto($datos);
-							   if ($consulta == true) {
-									$this->session->set_flashdata('ControllerMessage','Se Ha Guardado Correctamente');
-									redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
-								} else {
-									$this->session->set_flashdata('ControllerMessage','Se ha Producido un Error Intentelo Nuevamente');
-									redirect(base_url().'productos/add/'.$folder_nav.'/'.$nav,301);
-								}
+			
+							$this->session->set_flashdata('ControllerMessage','Falla, Se ha Producido un Error Intentelo Nuevamente');
+							redirect(base_url().'pedidos/add_carrito/'.$folder_nav.'/'.$nav,301);
+								
 		                   }
 				
 			}
@@ -96,14 +89,41 @@ class Pedidos extends CI_Controller {
 
 
 		$data['titulo']				=		'VentaSoft Productos';
-		$data['viewControlador']	=		          'productos';
+		$data['viewControlador']	=		            'pedidos';
 		$data['viewNave']	        =                 $folder_nav;
 		$data['nave']		    	=		                 $nav;
-		$data['contenido']			=		                'add';
-        //todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
+		$data['contenido']			=		          'productos';
+        $data['datos']				=		$this->productos_model->getProductos();
+		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
 		$data['categorias'] 		=		$this->categorias_model->getCategorias();
-        $data['proveedores']		=		$this->proveedores_model->getProveedores();
 		$this->load->view('masterPage/masterPage', $data, FALSE);
+	}
+
+	public function get_carrito($folder_nav=null,$nav=null)
+	{   
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		         'pedidos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=		         'carrito';
+	
+		$this->load->view('masterPage/masterPage', $data);
+	}
+
+	public function limpiar_carrito($folder_nav=null,$nav=null)
+	{   
+		
+		 $this->cart->destroy();
+         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+		
+	}
+
+	public function actualizar_carrito($folder_nav=null,$nav=null)
+	{   
+		 $data= $this->input->post();
+		 $this->cart->update($data);
+         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+		
 	}
 
 	public function update($id=null,$folder_nav=null,$nav=null)
@@ -161,6 +181,7 @@ class Pedidos extends CI_Controller {
 
 	public function adicionar($id=null,$folder_nav=null,$nav=null)
 	{
+
 
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 

@@ -144,6 +144,8 @@ class Productos extends CI_Controller {
 	public function adicionar($id=null,$folder_nav=null,$nav=null)
 	{
 
+
+
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 
 			    $this->form_validation->set_message('required', 'campo  obligatorio');

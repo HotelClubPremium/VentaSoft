@@ -45,7 +45,7 @@
 
 									                               <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
-																		echo form_open_multipart('productos/search/'.$folder_nav.'/'.$nav,$atributos);
+																		echo form_open('productos/search/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
 				                                                            	     <label class="control-label">Busqueda por:</label>
 				                                                            	     <select name="criterio" id="criterio"   class="form-control">
@@ -66,9 +66,9 @@
 
 
 								<div class="panel panel-default">
-												   <div class="panel-heading">
-													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>productos/add/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
-													 </div>
+												    <div class="panel-heading">
+												      <br>
+													</div>
 												  <div class="panel-body">                                                                               
 															    <table class="table table-hover">
 																<tr>
@@ -83,8 +83,8 @@
 																<?php foreach ($datos as $dato) {?>
 
 																  <?php 
-																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right');
-																		echo form_open_multipart('pedidos/add_carrito/'.$folder_nav.'/'.$nav,$atributos);
+																		$atributos = array('id'=>'add_carrito','class'=>'navbar-form navbar-right');
+																		echo form_open('pedidos/add_carrito/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
   
 																  
@@ -109,9 +109,17 @@
 																									 }
 																											
 																										}
-																						      ?>  
+																						      ?>
+
+
 																					<td> <input type="number" name="unidades" placeholder="unidades" class="form-control" value="<?php echo set_value("unidades")?>"></td>    
-																					<td>  <a      aria-hidden="true"  title="Agregar al carrito" href="<?php echo base_url()?>productos/adicionar/<?php echo $dato->id_producto?>/<?php echo  $folder_nav;?>/<?php echo $nav;?>"><img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-out.png"></img></a> </td>
+
+																					<input type="hidden" name="id_producto"     value="<?php echo $dato->id_producto?>"></input> 
+																					<input type="hidden" name="nom_producto"    value="<?php echo $dato->nom_producto;?>"></input> 
+																					<input type="hidden" name="valor_producto"  value="<?php echo $dato->valor_producto;?>"></input> 
+																				
+
+												                                    <td><input type="submit" name="Guardar" value=""><img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-out.png"></img></input></td>
 																				</tr>
                                                                     <?php 
 																	   echo form_close();

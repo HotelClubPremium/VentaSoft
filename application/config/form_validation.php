@@ -82,6 +82,15 @@ $config = array(
 			array('field' => 'user', 	       'label'=> 'user',                'rules' => 'required|is_string|trim|xss_clean'),			
 			array('field' => 'acceso',         'label'=> 'acceso', 	        	'rules' => 'required|numeric|trim|xss_clean')
 	                                ),
+
+	    
+	  
+	     'vali_Carrito'  => array(
+			array('field' => 'id_producto',	   'label'=> 'id_producto',	    	'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'nom_producto',   'label'=> 'nom_producto', 		'rules' => 'required|is_string|trim|xss_clean'),
+			array('field' => 'unidades', 	   'label'=> 'unidades',            'rules' => 'required|numeric|trim|xss_clean'),			
+			array('field' => 'valor_producto', 'label'=> 'valor_producto', 		'rules' => 'required|numeric|trim|xss_clean')	
+	                                ),
 	     
 	    
 	    'empleados/add'	=>	array(
