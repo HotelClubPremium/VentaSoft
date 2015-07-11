@@ -21,10 +21,19 @@ class Pedidos_model extends CI_Model {
 		return true;
 	}
 
-
-
-
-
+	public function newCodigoPedido()
+	{
+		$query=$this->db
+				->select_max('id_pedido')
+				->from('pedidos')
+				->get();
+	
+		   foreach ($query->result() as $fila)
+			{
+			    return $fila->id_pedido;
+			}
+	}
+	
 
 	public function getProductos()
 	{

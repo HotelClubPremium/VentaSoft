@@ -141,25 +141,39 @@ class Pedidos extends CI_Controller {
 	{   
 		 $data= $this->input->post();
 		 $this->cart->update($data);
+         
+
+         // solicito el ultimo id de pedido en la tabla pedidos y  lo incremento en 1 para obtener el nuevo id de pedido
+		 $new_id_pedido = $this->pedidos_model->newCodigoPedido(); 
+		 $new_id_pedido++; 
+         //con el id de usuarios  solicito el id d  persona (cliente) para registrar pedido a su nombre.
+		 $id_persona = $this->usuarios_model->searchId_perosna($id);
+
+
+         //con el id d quien inicio la session  obtengo la cedula (ip_persona del vendedor).
+         $id_vendedor = $this->session->userdata('id_usuario');
+		 $id_vendedor = $this->usuarios_model->searchId_perosna($id_vendedor);
 
 		 	$datos_pedido = array(
-					        'id_pedido'      =>"12345",
-					        'id_persona'     =>"1065"  
+					        'id_pedido'      =>$new_id_pedido,
+					        'id_persona'     =>$id_persona,
+					        'id_vendedor'    =>$id_vendedor 
                                 );
 
-            	   $guardar_pedido = $this->pedidos_model->insertPedido($datos_pedido);
+           //guardo datos en la tabla pedidos
+           $guardar_pedido = $this->pedidos_model->insertPedido($datos_pedido);
 
            
             $i = 1;
 			foreach ($this->cart->contents() as $items):
 
 		 	$datos = array(
-					        'id_pedido'       =>"12345",
+					        'id_pedido'       =>$new_id_pedido,
 					        'id_producto'     =>$items['id'],
 					        'cantidad'        =>$items['qty'],
 					        'valor_unitario'  => $items['price']
                                 );
-
+                    //guardar en detalles de pedidos todos los productos de ese pedido
 					$guardar_detalle_pedidos= $this->pedidos_model->insertDetallePedido($datos);
 
 		    $i++;

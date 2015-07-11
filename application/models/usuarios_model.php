@@ -61,6 +61,21 @@ public function searchIdUsuario($id)
 				->get();
 		return $query->row();
 	}
+
+
+	public function searchId_perosna($id)
+	{
+		$consulta=array('id_usuario'=>$id);
+		$query=$this->db
+				->select('id_persona')
+				->from('usuarios')
+				->where($consulta)
+				->get();
+		   foreach ($query->result() as $fila)
+			{
+			    return $fila->id_persona;
+			}
+	}
 	
 
 	public function searchUsuarios($criterio,$valor)
