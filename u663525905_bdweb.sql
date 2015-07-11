@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-06-2015 a las 17:49:43
+-- Tiempo de generación: 11-07-2015 a las 13:28:48
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -45,6 +45,30 @@ INSERT INTO `categorias` (`id_categoria`, `nom_categoria`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ci_sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('a49f6c1061572c6273a923970e807cf3', '::1', 'Mozilla/5.0 (Windows NT 10.0; rv:39.0) Gecko/20100101 Firefox/39.0', 1436566392, 'a:6:{s:9:"user_data";s:0:"";s:5:"token";s:32:"c79c910a8923e3dc8b870b650734adab";s:12:"is_logued_in";b:1;s:10:"id_usuario";s:1:"5";s:3:"rol";s:13:"Administrador";s:4:"user";s:7:"Amiguel";}'),
+('e2b8bbdf95f59fa96a29a224df555579', '::1', 'Mozilla/5.0 (Windows NT 10.0; rv:39.0) Gecko/20100101 Firefox/39.0', 1436572614, 'a:1:{s:13:"cart_contents";a:3:{s:32:"d3d9446802a44259755d38e6d163e820";a:6:{s:5:"rowid";s:32:"d3d9446802a44259755d38e6d163e820";s:2:"id";s:2:"10";s:3:"qty";s:1:"4";s:5:"price";s:4:"1000";s:4:"name";s:12:"Uva postobon";s:8:"subtotal";i:4000;}s:11:"total_items";i:4;s:10:"cart_total";i:4000;}}');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `detalle_pedidos`
 --
 
@@ -52,10 +76,19 @@ CREATE TABLE IF NOT EXISTS `detalle_pedidos` (
   `id_pedido` varchar(20) NOT NULL,
   `id_producto` varchar(20) NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `valor_unitario` bigint(20) NOT NULL,
+  `valor_unitario` int(20) NOT NULL,
   KEY `fk_detalle_pedidos_pedidos1_idx` (`id_pedido`),
   KEY `fk_detalle_pedidos_productos1_idx` (`id_producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `detalle_pedidos`
+--
+
+INSERT INTO `detalle_pedidos` (`id_pedido`, `id_producto`, `cantidad`, `valor_unitario`) VALUES
+('12345', '10', 5, 1000),
+('12345', '11', 4, 3000),
+('12345', '12', 14, 1800);
 
 -- --------------------------------------------------------
 
@@ -68,6 +101,14 @@ CREATE TABLE IF NOT EXISTS `estados` (
   `descripcion` varchar(100) NOT NULL,
   PRIMARY KEY (`id_estado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`id_estado`, `descripcion`) VALUES
+('1', 'Solicitado'),
+('2', 'Aprobado');
 
 -- --------------------------------------------------------
 
@@ -105,13 +146,20 @@ CREATE TABLE IF NOT EXISTS `geolocalizacion` (
 
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `id_pedido` varchar(20) NOT NULL,
-  `fecha_pedido` date NOT NULL,
+  `fecha_pedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_persona` varchar(20) NOT NULL,
-  `id_estado` varchar(20) NOT NULL,
+  `id_estado` varchar(20) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_estados1_idx` (`id_estado`),
   KEY `fk_pedidos_personas1_idx` (`id_persona`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `id_persona`, `id_estado`) VALUES
+('12345', '2015-07-11 04:52:34', '1065', '1');
 
 -- --------------------------------------------------------
 
@@ -137,7 +185,20 @@ CREATE TABLE IF NOT EXISTS `personas` (
 
 INSERT INTO `personas` (`id_persona`, `nom_persona`, `ape_persona`, `sexo`, `fecha_nacimiento`, `direccion`, `correo`, `telefono`) VALUES
 ('1065', 'Miguel Jose', 'Palomino Cerpa', 'm', '1992-10-14', 'calle 28 ', 'ing.migueljose@outlook.com', '3216968715'),
-('1066', 'Jeiner', 'Mellado Valencia', 'm', '1992-10-14', 'la Esperanza', 'ing.migueljose@outlook.com', '3135028786');
+('1066', 'Jeiner', 'Mellado Valencia', 'm', '1992-10-14', 'la Esperanza', 'ing.migueljose@outlook.com', '3135028786'),
+('10678', 'Orianis', 'Soto Palomino', 'f', '2001-07-23', 'Caracas', 'orianis@hotmail.com', '3216968715'),
+('1082249896', 'Stefany', 'Garcia Vasquez', 'f', '0000-00-00', 'calle falsa', 'steffygarcia@outlook.com', '3004096723');
+
+--
+-- Disparadores `personas`
+--
+DROP TRIGGER IF EXISTS `actualizar_id_persona`;
+DELIMITER //
+CREATE TRIGGER `actualizar_id_persona` AFTER UPDATE ON `personas`
+ FOR EACH ROW UPDATE `usuarios` SET `id_usuario`="10"
+WHERE `id_usuario`="6"
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -151,12 +212,22 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `cantidad` int(11) NOT NULL,
   `valor_producto` bigint(20) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
+  `estado` varchar(25) NOT NULL,
   `id_categoria` varchar(20) NOT NULL,
   `id_proveedor` varchar(20) NOT NULL,
   PRIMARY KEY (`id_producto`),
   KEY `fk_productos_categorias_idx` (`id_categoria`),
   KEY `fk_productos_proveedores1_idx` (`id_proveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `nom_producto`, `cantidad`, `valor_producto`, `descripcion`, `estado`, `id_categoria`, `id_proveedor`) VALUES
+('10', 'Uva postobon', 100, 1000, 'Bebida Refrescante 350 ml', 'Inactivo', '102', '1010'),
+('11', 'FAB', 35, 3000, 'Detergente en polvo 350gr', 'Activo', '100', '1011'),
+('12', 'Manzana Postobon', 200, 1800, 'Bebida refrescante 1 litro', 'Activo', '102', '1010');
 
 -- --------------------------------------------------------
 
@@ -179,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
 
 INSERT INTO `proveedores` (`id_proveedor`, `nom_proveedor`, `ape_proveedor`, `telefono`, `correo`) VALUES
 ('1010', 'Postobon S.A', 'S.A', '3216968715', 'postobon@outlook.com'),
-('1011', 'Stanley', 'S.A', '3216968715', 'stanley@outlook.com');
+('1011', 'Stanley', 'S.A', '3216968719', 'stanley@outlook.com');
 
 -- --------------------------------------------------------
 
@@ -218,14 +289,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `user_UNIQUE` (`user`),
   KEY `fk_usuarios_personas1_idx` (`id_persona`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `rol`, `user`, `pass`, `acceso`, `id_persona`) VALUES
-(5, 'Administrador', 'Amiguel', 'd033e22ae348aeb5660fc2140aec35850c4da997', '1', '1065');
+(5, 'Administrador', 'Amiguel', 'd033e22ae348aeb5660fc2140aec35850c4da997', '1', '1065'),
+(8, 'Cliente', 'Aorianis', '60c76388354fdb91615d2a9164367c68007b4f3d', '1', '10678'),
+(10, 'Cliente', 'teffygar', '883863c7d716e471efbf1435947a3aab984b6160', '1', '1082249896');
 
 --
 -- Restricciones para tablas volcadas
