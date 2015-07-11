@@ -1,17 +1,30 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Productos_model extends CI_Model {
+class Pedidos_model extends CI_Model {
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-	public function insertProducto($datos=array())
+	public function insertPedido($datos=array())
 	{
-		$this->db->insert('productos', $datos);
+		$this->db->insert('pedidos', $datos);
 		return true;
 	}
+
+
+
+	public function insertDetallePedido($datos=array())
+	{
+		$this->db->insert('detalle_pedidos', $datos);
+		return true;
+	}
+
+
+
+
+
 
 	public function getProductos()
 	{

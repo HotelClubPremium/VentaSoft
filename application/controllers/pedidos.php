@@ -5,12 +5,14 @@ class Pedidos extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->load->model('productos_model');
 		$this->load->model('roles_model');
 		$this->load->model('categorias_model');
 		$this->load->model('clientes_model');
 		$this->load->model('usuarios_model');
 	    $this->load->model('proveedores_model');
+	    $this->load->model('pedidos_model');
 	}
 
 
@@ -43,13 +45,14 @@ class Pedidos extends CI_Controller {
 		$data['datos']				=		$this->productos_model->getProductos();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
 		$data['categorias'] 		=		$this->categorias_model->getCategorias();
+		$data['id_cliente']      	=		$id;
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
 
-	public function add_carrito($folder_nav=null,$nav=null)
+	public function add_carrito($id=null,$folder_nav=null,$nav=null)
 	{
-		print_r($_POST);
+		
 
 		if ($this->input->post()) { //pregunto si me llegaron datos del formulario
 			
@@ -75,11 +78,11 @@ class Pedidos extends CI_Controller {
                      
 				    if ($rsta == true) {
 						     $this->session->set_flashdata('ControllerMessage','Producto agregado al carrito satisfactoriamente');
-							 redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+							 redirect(base_url().'pedidos/get_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
 				    } else {
 			
 							$this->session->set_flashdata('ControllerMessage','Falla, Se ha Producido un Error Intentelo Nuevamente');
-							redirect(base_url().'pedidos/add_carrito/'.$folder_nav.'/'.$nav,301);
+							redirect(base_url().'pedidos/add_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
 								
 		                   }
 				
@@ -96,39 +99,77 @@ class Pedidos extends CI_Controller {
         $data['datos']				=		$this->productos_model->getProductos();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
 		$data['categorias'] 		=		$this->categorias_model->getCategorias();
+		$data['id_cliente']      	=		$id;
 		$this->load->view('masterPage/masterPage', $data, FALSE);
 	}
 
-	public function get_carrito($folder_nav=null,$nav=null)
+	public function get_carrito($id=null,$folder_nav=null,$nav=null)
 	{   
 		$data['titulo']				=    'VentaSoft Productos';
 		$data['viewControlador']	=		         'pedidos';
 		$data['viewNave']	        =              $folder_nav;
 		$data['nave']		    	=		              $nav;
 		$data['contenido']			=		         'carrito';
+		$data['id_cliente']      	=		               $id;
 	
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
-	public function limpiar_carrito($folder_nav=null,$nav=null)
+	public function limpiar_carrito($id=null,$folder_nav=null,$nav=null)
 	{   
 		
 		 $this->cart->destroy();
-         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+         redirect(base_url().'pedidos/get_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
 		
 	}
 
-	public function actualizar_carrito($folder_nav=null,$nav=null)
+	public function actualizar_carrito($id=null,$folder_nav=null,$nav=null)
 	{   
 		 $data= $this->input->post();
 		 $this->cart->update($data);
-         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+         redirect(base_url().'pedidos/get_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
 		
 	}
-	public function quitar_producto_carrito($rowid=null,$folder_nav=null,$nav=null)
+	public function quitar_producto_carrito($id=null,$rowid=null,$folder_nav=null,$nav=null)
 	{   
 		 $this -> cart -> update(array('rowid' => $rowid, 'qty' => 0));
-         redirect(base_url().'pedidos/get_carrito/'.$folder_nav.'/'.$nav,301);
+         redirect(base_url().'pedidos/get_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
+	}
+
+
+	public function guardar_pedido($id=null,$folder_nav=null,$nav=null)
+	{   
+		 $data= $this->input->post();
+		 $this->cart->update($data);
+
+		 	$datos_pedido = array(
+					        'id_pedido'      =>"12345",
+					        'id_persona'     =>"1065"  
+                                );
+
+            	   $guardar_pedido = $this->pedidos_model->insertPedido($datos_pedido);
+
+           
+            $i = 1;
+			foreach ($this->cart->contents() as $items):
+
+		 	$datos = array(
+					        'id_pedido'       =>"12345",
+					        'id_producto'     =>$items['id'],
+					        'cantidad'        =>$items['qty'],
+					        'valor_unitario'  => $items['price']
+                                );
+
+					$guardar_detalle_pedidos= $this->pedidos_model->insertDetallePedido($datos);
+
+		    $i++;
+			endforeach;
+
+
+         $this->cart->destroy();
+		 $this->session->set_flashdata('ControllerMessage','Pedido guardado correctamente');
+         redirect(base_url().'pedidos/get_carrito/'.$id.'/'.$folder_nav.'/'.$nav,301);
+		
 	}
 
 	

@@ -42,6 +42,7 @@
                                  <?php  // recibir por parametro el nombre del diretorio  y el nav que pedendiendo del rol (rolAdmin,rolCliente,rolVendedor)
 								        $nav= $nave;
 								        $folder_nav= $viewNave;
+								        
 								       
 								 ?>
 

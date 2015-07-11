@@ -40,18 +40,18 @@
                                  <?php  // recibir por parametro el nombre del diretorio  y el nav que pedendiendo del rol (rolAdmin,rolCliente,rolVendedor)
 								        $nav= $nave;
 								        $folder_nav= $viewNave;
-								       
+								        $id= $id_cliente; 
 								 ?>
 
 								<div class="panel panel-default">
 												    <div class="panel-heading">
-												     <a  href="<?php echo base_url()?>pedidos/productos/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Volver a Productos </a>
+												     <a  href="<?php echo base_url()?>pedidos/productos/<?php echo  $id;?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Volver a Productos </a>
 													</div>
 												<div class="panel-body">  
                                                      
-                                                     <?php echo form_open('pedidos/actualizar_carrito/'.$folder_nav.'/'.$nav)?>
+                                                     <?php echo form_open('pedidos/actualizar_carrito/'.$id.'/'.$folder_nav.'/'.$nav)?>
 
-															      <table class="table table-hover">
+															<table class="table table-hover">
 																<tr>
 																	<th class="left">Cantidad</th>
 																	<th>Producto</th>
@@ -75,18 +75,16 @@
 																			                	</div>
 																		                </td>
 																		                <td>
-																		                        <?php echo $items['name']; ?>
+																		                        <?php echo $items['name'];?>
 																		                </td>
-																		                <td>
-																		                	    <?php echo number_format($items['price'],2,',','.'); ?>
+																		                <td>$
+																		                	    <?php echo number_format($items['price'],2,',','.');?>
 																		                </td>
 																		                <td>$   
-																		                	    <?php echo number_format($items['subtotal'],2,',','.'); ?>
+																		                	    <?php echo number_format($items['subtotal'],2,',','.');?>
 																		                </td>
-																		                 <td>  
-																		                 	
-																		                	 <a aria-hidden="true"  title="Quitar Producto del Carrito" onclick="if(confirmarEliminar() == false) return false" title="Quitar del carrito" href="<?php echo base_url()?>pedidos/quitar_producto_carrito/<?php echo $items['rowid'];?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-in.png"></img></a>   
-																		                     
+																		                <td>  
+																		                 	<a aria-hidden="true"  title="Quitar Producto del Carrito" onclick="if(confirmarEliminar() == false) return false" title="Quitar del carrito" href="<?php echo base_url()?>pedidos/quitar_producto_carrito/<?php echo $id;?>/<?php echo $items['rowid'];?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-in.png"></img></a>   
 																		                </td>
 																		        </tr>
 
@@ -97,17 +95,18 @@
 																		<tr>
 																		        <td class="active"> </td>
 																		        <td class="active"> </td>
-																		        <td class="danger right"><strong>Total</strong> </td>
-																		        <td class="danger right">$<?php echo  number_format($this->cart->total(),2,',','.'); ?> </td>
+																		        <td class="danger right"><strong>Total </strong> </td>
+																		        <td class="danger right">$ <?php echo  number_format($this->cart->total(),2,',','.'); ?> </td>
                                                                                 <td class="active"> </td>
 																		        <td class="active"> </td>
 																		</tr>
 
-																		</table>
+																  </table>
 
 															<p><?php echo form_submit('', 'Actualizar Carrito'); ?></p>  
-															<a aria-hidden="true"  title="Limpiar Carrito" href="<?php echo base_url()?>pedidos/limpiar_carrito/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-tick.png"></img></a>                                                                            
-															   
+															<a aria-hidden="true"  title="Limpiar Carrito" href="<?php echo base_url()?>pedidos/limpiar_carrito/<?php echo $id;?>/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-tick.png"></img></a>
+															<a aria-hidden="true"  title="Guardar Pedido" href="<?php echo base_url()?>pedidos/guardar_pedido/<?php echo $id;?>/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-shop.png"></img></a>                                                                        
+															
 
 
 								                 </div>

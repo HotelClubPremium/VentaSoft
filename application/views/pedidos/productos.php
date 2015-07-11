@@ -40,8 +40,7 @@
                                  <?php  // recibir por parametro el nombre del diretorio  y el nav que pedendiendo del rol (rolAdmin,rolCliente,rolVendedor)
 								        $nav= $nave;
 								        $folder_nav= $viewNave;
-
-								       
+								        $id= $id_cliente;   
 								 ?>
 
 									                               <?php 
@@ -68,7 +67,7 @@
 
 								<div class="panel panel-default">
 												    <div class="panel-heading">
-												    	<a  href="<?php echo base_url()?>pedidos/get_carrito/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Ir a Carrito </a>
+												    	<a  href="<?php echo base_url()?>pedidos/get_carrito/<?php echo  $id;?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Ir a Carrito </a>
 												   </div>
 												  <div class="panel-body">                                                                               
 															    <table class="table table-hover">
@@ -85,7 +84,7 @@
 
 																  <?php 
 																		$atributos = array('id'=>'add_carrito','class'=>'navbar-form navbar-right');
-																		echo form_open('pedidos/add_carrito/'.$folder_nav.'/'.$nav,$atributos);
+																		echo form_open('pedidos/add_carrito/'.$id.'/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
   
 																  
