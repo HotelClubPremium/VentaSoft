@@ -13,7 +13,7 @@
                        <?php 
                              $nav='navCliente';
                              $folder_nav='rolCliente';
-                             $id= $this->session->userdata('id_persona');
+                             $id_persona =$this->session->userdata('id_persona');
                        ?>
            
                     <ul class="nav navbar-nav ">
@@ -23,7 +23,7 @@
                       <li class      ="dropdown">
                         <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Pedidos<b class="caret"></b></a>
                         <ul role       ="menu" class="dropdown-menu">
-                            <li><a href="<?php echo base_url()?>pedidos/productos/<?php echo  $id;?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Nuevo</a></li>
+                            <li><a href="<?php echo base_url()?>pedidos/productos/<?php echo $id_persona;?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Nuevo</a></li>
                             <li><a href="<?php echo base_url()?>pedidos/pedidos_realizados/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Realizados</a></li>
                         </ul>
                      </li>

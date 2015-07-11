@@ -78,8 +78,9 @@ class Login extends CI_Controller
 	                'is_logued_in' 	=> 		TRUE,
 	                'id_usuario' 	=> 		$check_user->id_usuario,
 	                'rol'		    =>		$check_user->rol,
-	                'user' 	    	=> 		$check_user->user,
 	                'id_persona' 	=> 		$check_user->id_persona,
+	                'user' 	    	=> 		$check_user->user,
+	               
             		);		
 					$this->session->set_userdata($data);
 					$this->index();
