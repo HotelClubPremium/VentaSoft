@@ -16,6 +16,7 @@
             }
         
         </script>
+        <?php echo $map['js'] ?>
           <script type="text/javascript">
 
                 function confirmarEliminar()

@@ -24,7 +24,7 @@
                 <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Vendedores<b class="caret"></b></a>
                 <ul role       ="menu" class="dropdown-menu">
                 <li><a href    ="#">Vendedores</a></li>
-                <li><a href    ="#">Rutas del dia</a></li>
+                <li><a href    ="<?php echo base_url()?>mapas/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Rutas del dia</a></li>
                 <li><a href    ="#">Ubicacion Actual</a></li>
                 </ul>
                 </li>
