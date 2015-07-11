@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-07-2015 a las 13:28:48
+-- Tiempo de generación: 11-07-2015 a las 14:58:49
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -86,9 +86,8 @@ CREATE TABLE IF NOT EXISTS `detalle_pedidos` (
 --
 
 INSERT INTO `detalle_pedidos` (`id_pedido`, `id_producto`, `cantidad`, `valor_unitario`) VALUES
-('12345', '10', 5, 1000),
-('12345', '11', 4, 3000),
-('12345', '12', 14, 1800);
+('1002', '11', 3, 3000),
+('1002', '12', 4, 1800);
 
 -- --------------------------------------------------------
 
@@ -149,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `fecha_pedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_persona` varchar(20) NOT NULL,
   `id_estado` varchar(20) NOT NULL DEFAULT '1',
+  `id_vendedor` varchar(20) NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedidos_estados1_idx` (`id_estado`),
   KEY `fk_pedidos_personas1_idx` (`id_persona`)
@@ -158,8 +158,8 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `id_persona`, `id_estado`) VALUES
-('12345', '2015-07-11 04:52:34', '1065', '1');
+INSERT INTO `pedidos` (`id_pedido`, `fecha_pedido`, `id_persona`, `id_estado`, `id_vendedor`) VALUES
+('1002', '2015-07-11 14:54:33', '10678', '1', '1065');
 
 -- --------------------------------------------------------
 
