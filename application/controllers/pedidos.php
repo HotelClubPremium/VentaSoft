@@ -312,7 +312,40 @@ class Pedidos extends CI_Controller {
 		$data['contenido']			=      'pedidos_realizados';
 		$data['datos']				=		$this->pedidos_model->getPedidos();
 		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
-		$data['estado'] 		=		$this->pedidos_model->getEstados();
+		$data['estados'] 		=		$this->pedidos_model->getEstados();
+		$this->load->view('masterPage/masterPage', $data);
+	}
+
+	public function search_pedidos_realizados($folder_nav=null,$nav=null)   
+       {
+
+		
+		        $criterio             = $this->input->post("criterio");
+			    $valor                =    $this->input->post("valor");
+		$data['titulo']				  =                    'Ventasoft';
+		$data['viewControlador']	  =		                 'pedidos';
+		$data['viewNave']	          =                    $folder_nav;
+		$data['nave']		    	  =		                      $nav;
+		$data['contenido']			  =	    'search_pedidos_realizados';
+		$data['datos']				  =		$this->pedidos_model->search_pedidos_realizados($criterio,$valor);
+	    $data['estados'] 	          =		$this->pedidos_model->getEstados();
+      
+		$this->load->view('masterPage/masterPage', $data);
+		
+	}
+
+
+	public function pedidos_detalles($id=null,$folder_nav=null,$nav=null)
+	{   
+
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		         'pedidos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=      'pedidos_detalles';
+		$data['datos']				=		$this->pedidos_model->getPedidos_Detalles($id);
+		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
+		$data['estados'] 		=		$this->pedidos_model->getEstados();
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
@@ -388,6 +421,11 @@ class Pedidos extends CI_Controller {
 		$this->load->view('masterPage/masterPage', $data);
 		
 	}
+
+
+
+
+	
 
 }
 

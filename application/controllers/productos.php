@@ -26,6 +26,21 @@ class Productos extends CI_Controller {
 		$this->load->view('masterPage/masterPage', $data);
 	}
 
+	public function index_clientes($folder_nav=null,$nav=null)
+	{   
+
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		       'productos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=		  'index_clientes';
+		$data['datos']				=		$this->productos_model->getProductos();
+		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
+		$data['categorias'] 		=		$this->categorias_model->getCategorias();
+		$data['proveedores']		=		$this->proveedores_model->getProveedores();
+		$this->load->view('masterPage/masterPage', $data);
+	}
+
 
 	public function add($folder_nav=null,$nav=null)
 	{
@@ -254,6 +269,26 @@ class Productos extends CI_Controller {
 		$this->load->view('masterPage/masterPage', $data);
 		
 	}
+
+	public function search_clientes($folder_nav=null,$nav=null)   
+       {
+
+		
+		        $criterio             = $this->input->post("criterio");
+			    $valor                = $this->input->post("valor");
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		       'productos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=        'search_clientes';
+		$data['datos']				=		$this->productos_model->searchProductos($criterio,$valor);
+        //todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
+ 	    $data['categorias'] 		=		$this->categorias_model->getCategorias();
+        $data['proveedores']		=		$this->proveedores_model->getProveedores();
+		$this->load->view('masterPage/masterPage', $data);
+		
+	}
+
 
 }
 

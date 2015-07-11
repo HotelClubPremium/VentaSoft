@@ -79,7 +79,7 @@ class Login extends CI_Controller
 	                'id_usuario' 	=> 		$check_user->id_usuario,
 	                'rol'		    =>		$check_user->rol,
 	                'user' 	    	=> 		$check_user->user,
-	               
+	                'id_persona' 	=> 		$check_user->id_persona,
             		);		
 					$this->session->set_userdata($data);
 					$this->index();

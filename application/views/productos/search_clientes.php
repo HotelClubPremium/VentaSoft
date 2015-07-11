@@ -28,7 +28,7 @@
 				      	             
 												 <div class="panel panel-default">
 													  <div class="panel-heading">
-													  	 <h1>Pedidos <small></small></h1>
+													  	 <h1>Productos <small>Buscar</small></h1>
 													  </div>
 												  </div>
 									          
@@ -44,93 +44,95 @@
 								        $folder_nav= $viewNave;
 								       
 								 ?>
-
-									                               <?php 
+                                                          <?php 
 																		$atributos = array( 'search' => 'form','name'=>'form' ,'class'=>'navbar-form navbar-right' ,'role'=>'search');
-																		echo form_open_multipart('pedidos/search_pedidos_realizados/'.$folder_nav.'/'.$nav,$atributos);
+																		echo form_open_multipart('productos/search_clientes/'.$folder_nav.'/'.$nav,$atributos);
 																    ?>
 				                                                            	     <label class="control-label">Busqueda por:</label>
 				                                                            	     <select name="criterio" id="criterio"   class="form-control">
-				                                                                          <option value="id_pedido" >Id Pedido</option>
-				                                                                          <option value="fecha_pedido" selected >Fecha</option>
-				                                                                          <option value="id_persona" >Id Cliente</option>
-				                                                                          <option value="id_vendedor" >Id Vendedor</option>
+				                                                                          <option value="id_producto" >Id</option>
+				                                                                          <option value="nom_producto" selected >Nombre</option>
+				                                                                          <option value="cantidad" >Cantidad</option>
+				                                                                          <option value="valor_producto" >Valor unitario</option>
+				                                                                          <option value="descripcion" >Descripcion</option>
+				                                                                          <option value="estado" >Estado</option>
+				                                                                          <option value="id_categoria" >Categoria</option>
+				                                                                          <option value="id_proveedor" >Proveedor</option>
 				                                                            	     </select>
 
-																		 		    <input type="text"  name="valor"  value="<?php echo set_value("valor")?>"  class="form-control" placeholder="Buscar pedidos">
-																		 		    <input type="submit" value="Buscar" title="Buscar pedidos" class="btn btn-info">
+																		 		    <input type="text"  name="valor"  value="<?php echo set_value("valor")?>"  class="form-control" placeholder="Buscar producto">
+																		 		    <input type="submit" value="Buscar" title="Buscar productos" class="btn btn-info">
 																		 		  
 															    	  <?php 
 																	   echo form_close();
 												                     ?>  
-
-
 								<div class="panel panel-default">
 												   <div class="panel-heading">
-													    <a class="glyphicon glyphicon-plus-sign " aria-hidden="true" href="<?php echo base_url()?>pedidos/clientes/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"> Nuevo </a>
+													   <br>
 													 </div>
 												  <div class="panel-body">                                                                               
 															    <table class="table table-hover">
 																<tr>
-																	<th>Id pedido</th>
-																	<th>Fecha</th>
-																	<th>Id Cliente</th>
+																	<th>Id</th>
+																	<th>Nombre </th>
+																	<th>Cantidad</th>
+																	<th>Valor unitario</th>
+																	<th>Descripcion</th>
 																	<th>Estado</th>
-																	<th>Id Vendedor</th>
-																	<th>Acciones</th>
+																	<th>Categoria</th>
+																	<th>Proveedor</th>
+																	
 																</tr>
 																<?php foreach ($datos as $dato) {?>
 																	<tr>
-																		<td><?php echo $dato->id_pedido;?></td>
-																		<td><?php echo $dato->fecha_pedido;?></td>
-																		<td><?php echo $dato->id_persona; ?></td>
-
+																		<td><?php echo $dato->id_producto;?></td>
+																		<td><?php echo $dato->nom_producto;?></td>
+																		<td><?php echo $dato->cantidad; ?></td>
+																		<td><?php echo $dato->valor_producto; ?></td>
+																		<td><?php echo $dato->descripcion; ?></td>
+																		<td><?php echo $dato->estado; ?></td>
                                                                                 <!-- obtengo  el id de categoria--> 
                                                                                 <!-- recorro todas las categoria y comparo id--> 
                                                                                 <!-- s coinciden muestro el nombre de la categoria--> 
 
                                                                                  <?php
-																					$esta = $dato->id_estado;
-																					foreach($estados as $fila)
+																					$cate = $dato->id_categoria;
+																					foreach($categorias as $fila)
 																					{
-                                                                                      if ($fila -> id_estado == $esta )
+                                                                                      if ($fila -> id_categoria == $cate )
 																						 {
 																				  ?>
-																				          <td><?=$fila -> descripcion ?></td> 
+																				          <td><?=$fila -> nom_categoria ?></td> 
 																				  <?php 
 																						 }
 																								
 																							}
 																			      ?>
-																		
-
-																		<td><?php echo $dato->id_vendedor;?></td>
-																		
-                                                                                
+                                                                                    <!-- los mismos procesos q con  categoria--> 
+																			       <?php
+																					$prove = $dato->id_proveedor;
+																					foreach($proveedores as $fila)
+																					{
+                                                                                      if ($fila -> id_proveedor == $prove )
+																						 {
+																				  ?>
+																				          <td><?=$fila -> nom_proveedor ?></td> 
+																				  <?php 
+																						 }
+																								
+																							}
+																			      ?>	
 						
-																		<td><a class="glyphicon glyphicon-list-alt" aria-hidden="true"  title="Ver Detalles" href="<?php echo base_url()?>pedidos/pedidos_detalles/<?php echo $dato->id_pedido?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>"></a> </td>
+																		
 																	</tr>
 																<?php } 
 																?>
 															</table> 
-								                </div>
+								                  </div>
 								</div>
 							</div>	
-
-        
-
-
-										
 
 				      </div>  <!--/cierre vcol md9--> 
                 </div>
 			</div>
 </div>	
-
-
-
-
-
-
-
-

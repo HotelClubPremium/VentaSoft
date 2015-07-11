@@ -33,6 +33,25 @@ class Pedidos_model extends CI_Model {
 			    return $fila->id_pedido;
 			}
 	}
+
+	public function getPedidos()
+	{
+		$query=$this->db
+				->select('*')
+				->from('pedidos')
+				->get();
+		return $query->result();
+	}
+
+
+	public function getEstados()
+	{
+		$query=$this->db
+				->select('*')
+				->from('estados')
+				->get();
+		return $query->result();
+	}
 	
 
 	public function getProductos()
@@ -68,8 +87,41 @@ class Pedidos_model extends CI_Model {
 		return $query->result();
 	}
 
-	
+		public function search_pedidos_realizados($criterio,$valor)
+	{
+		$consulta=array($criterio=>$valor);
+		
 
+		$query=$this->db
+				->select('*')
+				->from('pedidos')
+				->like($consulta)
+				->get();
+		return $query->result();
+	}
+
+
+	public function getPedidos_Detalles($id)
+	{
+		$query = $this->db
+		       ->select('detalle_pedidos.id_pedido,detalle_pedidos.id_producto,productos.nom_producto,detalle_pedidos.cantidad,detalle_pedidos.valor_unitario')
+               ->from('detalle_pedidos')
+               ->join('productos','productos.id_producto = detalle_pedidos.id_producto')
+               ->get();
+        return $query->result();
+	}
+
+	public function getPedidos_DetallesJoin()
+	{
+		$query=$this->db
+				->select('*')
+				->from('detalle_pedidos')
+				->get();
+		return $query->result();
+	}
+
+
+	
 	public function estadoProducto($id)
 	{
 		$consulta=array('id_producto'=>$id,
