@@ -302,6 +302,22 @@ class Pedidos extends CI_Controller {
 
 
 
+	public function pedidos_realizados($folder_nav=null,$nav=null)
+	{   
+
+		$data['titulo']				=    'VentaSoft Productos';
+		$data['viewControlador']	=		         'pedidos';
+		$data['viewNave']	        =              $folder_nav;
+		$data['nave']		    	=		              $nav;
+		$data['contenido']			=      'pedidos_realizados';
+		$data['datos']				=		$this->pedidos_model->getPedidos();
+		//todas las categorias y proveedores para buscar el nombre y mostrarlo   y no el id como aparece en la la bd
+		$data['estado'] 		=		$this->pedidos_model->getEstados();
+		$this->load->view('masterPage/masterPage', $data);
+	}
+
+
+
 
 	public function delete($id=null,$folder_nav=null,$nav=null)
 	{

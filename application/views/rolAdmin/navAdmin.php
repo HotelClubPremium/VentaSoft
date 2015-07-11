@@ -19,14 +19,21 @@
 				<li class="active"><a href="<?php echo base_url()?>admin">Inicio</a></li>				
                 <li><a href="<?php echo base_url()?>proveedores/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Proveedores</a></li>
                 <li><a href="<?php echo base_url()?>productos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Productos</a></li>
-                <li><a href="<?php echo base_url()?>pedidos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Pedidos</a></li>  
+                <li class      ="dropdown">
+                        <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Pedidos<b class="caret"></b></a>
+                        <ul role       ="menu" class="dropdown-menu">
+                            <li><a href="<?php echo base_url()?>pedidos/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Nuevo</a></li>
+                            <li><a href="<?php echo base_url()?>pedidos/pedidos_realizados/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Realizados</a></li>
+                        </ul>
+                </li>
+               
 				<li class      ="dropdown">
-                <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Vendedores<b class="caret"></b></a>
-                <ul role       ="menu" class="dropdown-menu">
-                <li><a href    ="#">Vendedores</a></li>
-                <li><a href    ="<?php echo base_url()?>mapas/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Rutas del dia</a></li>
-                <li><a href    ="#">Ubicacion Actual</a></li>
-                </ul>
+                        <a data-toggle ="dropdown" class="dropdown-toggle" href="#">Vendedores<b class="caret"></b></a>
+                        <ul role       ="menu" class="dropdown-menu">
+                        <li><a href    ="#">Vendedores</a></li>
+                        <li><a href    ="<?php echo base_url()?>mapas/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Rutas del dia</a></li>
+                        <li><a href    ="#">Ubicacion Actual</a></li>
+                        </ul>
                 </li>
                 <li><a href="<?php echo base_url()?>usuarios/index/<?php echo  $folder_nav;?>/<?php echo  $nav;?>">Usuarios</a></li>
             </ul>

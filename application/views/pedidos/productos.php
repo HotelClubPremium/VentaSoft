@@ -20,10 +20,10 @@
                             </div>
 		 	          </div>
 
-				      <div class="col-md-9">  <!--/ abre contenido --> 
+				        <div class="col-md-9">  <!--/ abre contenido --> 
 
 
-				      	<div class="row">
+				       	<div class="row">
 												  <div class="panel panel-default">
 													  <div class="panel-heading">
 													  	 <h1>Productos <small>Agregar al carrito</small></h1>

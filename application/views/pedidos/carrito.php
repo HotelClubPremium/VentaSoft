@@ -23,7 +23,7 @@
 				      <div class="col-md-9">  <!--/ abre contenido --> 
 
 
-				      	<div class="row">
+				      	  <div class="row">
 												  <div class="panel panel-default">
 													  <div class="panel-heading">
 													  	 <h1>Carrito <small>Productos en carrito</small></h1>
@@ -48,13 +48,34 @@
 												     <a  href="<?php echo base_url()?>pedidos/productos/<?php echo  $id;?>/<?php echo  $folder_nav;?>/<?php echo  $nav;?>" class="btn btn-warning btn-sm" role="button"> Volver a Productos </a>
 													</div>
 												<div class="panel-body">  
+
+													<?php 
+													$btnActualizar = array(
+													'name' => 'actualizar_carrito',
+													'id' => 'actualizar_carrito',
+													'class' => 'btn btn-warning btn-sm',
+													'value' => 'Actualizar Carrito');
+
+
+													$btnLimpiar = array(
+													'name' => 'limpiar_carrito',
+													'id' =>   'limpiar_carrito',
+													'class' => 'btn btn-warning btn-sm',
+													'value' => 'Limpiar Carrito');
+
+													$btnGuardar = array(
+													'name' => 'guardar_pedido',
+													'id' => 'guardar_pedido',
+													'class' => 'btn btn-warning btn-sm',
+													'value' => 'Guardar Pedido');
+													?>
                                                      
                                                      <?php echo form_open('pedidos/actualizar_carrito/'.$id.'/'.$folder_nav.'/'.$nav)?>
 
 															<table class="table table-hover">
 																<tr>
-																	<th class="left">Cantidad</th>
 																	<th>Producto</th>
+																	<th >Cantidad</th>
 																	<th>Valor Unitario</th>
 																	<th>Sub-total</th>
 																	<th>Acciones</th>
@@ -70,13 +91,14 @@
                                                                                 
 																		        <tr>    
 																					    <td>
+																		                        <?php echo $items['name'];?>
+																		                </td>
+																					    <td>
 																			                	<div class="col-xs-4">
 																			                	<?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '4', 'size' => '2', 'placeholder'=>'cant', 'class'=>'form-control','type'=>'number')); ?>
 																			                	</div>
 																		                </td>
-																		                <td>
-																		                        <?php echo $items['name'];?>
-																		                </td>
+																		                
 																		                <td>$
 																		                	    <?php echo number_format($items['price'],2,',','.');?>
 																		                </td>
@@ -93,25 +115,56 @@
 																		<?php endforeach; ?>
 
 																		<tr>
-																		        <td class="active"> </td>
-																		        <td class="active"> </td>
+																		        <td class="danger right"><strong>Cant productos   </strong> </td>
+																		        <td class="danger">
+																		        	<div class="col-xs-4">
+																		             <?php echo $this->cart->total_items(); ?>
+																		            </div>
+																		        </td>
 																		        <td class="danger right"><strong>Total </strong> </td>
 																		        <td class="danger right">$ <?php echo  number_format($this->cart->total(),2,',','.'); ?> </td>
                                                                                 <td class="active"> </td>
 																		        <td class="active"> </td>
 																		</tr>
 
+
+
 																  </table>
 
-															<p><?php echo form_submit('', 'Actualizar Carrito'); ?></p>  
-															<a aria-hidden="true"  title="Limpiar Carrito" href="<?php echo base_url()?>pedidos/limpiar_carrito/<?php echo $id;?>/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-cart-tick.png"></img></a>
-															<a aria-hidden="true"  title="Guardar Pedido" href="<?php echo base_url()?>pedidos/guardar_pedido/<?php echo $id;?>/<?php echo $folder_nav;?>/<?php echo $nav;?>"> <img src="<?php echo base_url();?>utilities/img/iconos/glyphicons-shop.png"></img></a>                                                                        
+															<p><?php echo form_submit($btnActualizar); ?></p>  
+															<?php echo form_close()?>
+
 															
 
+														 <div class="row">
+														       <div class="col-xs-2">
+															         <?php echo form_open('pedidos/guardar_pedido/'.$id.'/'.$folder_nav.'/'.$nav)?>
+												                    <?php echo form_submit($btnGuardar); ?>
+												                    <?php echo form_close()?>
+					                                           </div>
+														       <div class="col-xs-2"></div>
+														       <div class="col-xs-2"></div>
+														       <div class="col-xs-2"></div>
+														       <div class="col-xs-2"></div>
+														      
+														       <div class="col-xs-2 ">
+														       	     <?php echo form_open('pedidos/limpiar_carrito/'.$id.'/'.$folder_nav.'/'.$nav)?>
+												                     <?php echo form_submit($btnLimpiar);?>
+									                                 <?php echo form_close()?>	   
+														      </div>
+									                    </div>	
+                                                            
 
 								                 </div>
+
+								                
 								</div>
-							</div>	
+										
+							</div>
+
+							
+
+							
 
 				      </div>  <!--/cierre vcol md9--> 
                 </div>
